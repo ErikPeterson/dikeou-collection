@@ -1,2 +1,4 @@
 vendor
 wp-content
+static/js
+static/css
