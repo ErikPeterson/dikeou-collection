@@ -22,3 +22,8 @@ gulp.task('sass', function(){
 				.pipe(sass())
 				.pipe(gulp.dest(path.join(csspath)));
 });
+
+
+gulp.task('watch', function(){
+	gulp.watch(path.join(sasspath, '**/*'), ['sass']);
+});
