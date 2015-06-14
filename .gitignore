@@ -1,3 +1,4 @@
 wordpress
 *.sass-cache
 *.log
+*.DS_Store
