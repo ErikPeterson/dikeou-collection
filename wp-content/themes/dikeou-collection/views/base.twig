@@ -7,53 +7,32 @@
 {% endblock %}
 
 	<body class="{{body_class}}" data-template="base.twig">
-		<header class="header" >
-			{% block header %}
-				<div class="wrapper">
-					<h1 class="hdr-logo" role="banner">
-						<a class="hdr-logo-link" href="/" rel="home">{{site.name}}</a>
-					</h1>
-					<nav id="nav-main" class="nav-main" role="navigation">
-						<ul class="nav">
-						{% for item in menu.get_items %}
-							<li class="nav-item {{item.classes | join(' ')}}">
-								<a class="nav-link" href="{{item.get_link}}">{{item.title}}</a>
-								{% if item.get_children %}
-									<ul class="nav nav-drop">
-									{% for child in item.get_children %}
-										<li class="nav-drop-item">
-											<a class="nav-link" href="{{child.get_link}}">{{child.title}}</a>
-										</li>
-									{% endfor %}
-									</ul>
-								{% endif %}
-							</li>
-						{% endfor %}
-						</ul>
-					</nav><!-- #nav -->
-				</div>
-			{% endblock %}
-		</header>
-
+	<div class="left">
+	
+		<div class="logo">
+			<img src="/wp-content/themes/dikeou-collection/static/images/logo.svg" />
+		</div>
+		<nav>
+			<div class="nav-inner">
+			<ul class="nav-links">
+				<li><a href="/artists">Artists</a></li>
+				<li><a href="/events">Events</a></li>
+				<li><a href="/contatc">Contact</a></li>
+				<li><a href="/about">About</a></li>
+				<li><a href="/zingrecs">Zingrecs</a></li>
+				<li><a href="/library">Library</a></li>
+				<li><a href="/art-co">ART-CO</a></li>
+			</ul>
+			</div>
+		</nav>
+	</div>
 		<section id="content" role="main" class="content-wrapper">
-			{% if title %}<h1>{{title}}</h1>{% endif %}
-			<div class="wrapper {{sidebar_class}}">
+			<div class="wrapper">
 				{% block content %}
-					Sorry, no content
 				{% endblock %}
 			</div>
-			{% if sidebar %}
-				<aside class="layout-sidebar">
-					{{sidebar}}
-				</aside>
-			{% endif %}
 		</section>
-
-		{% block footer %}
-			<footer id="footer">
-				{% include 'footer.twig' %}
-			</footer>
-			{{ function('wp_footer') }}
-		{% endblock %}
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="{{site.theme.link}}/static/js/site.js"></script>
 	</body>
 </html>
