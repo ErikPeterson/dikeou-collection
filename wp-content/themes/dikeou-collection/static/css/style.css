@@ -1,5 +1,6 @@
 @charset "UTF-8";
 html {
+  margin-top: 0 !important;
   font-size: 16px; }
 
 body {
@@ -40,6 +41,10 @@ nav {
   box-sizing: border-box;
   padding-top: 3rem;
   height: 3rem;
+  -webkit-transition: height 0.5s;
+  -moz-transition: height 0.5s;
+  -ms-transition: height 0.5s;
+  transition: height 0.5s;
   width: 100%;
   overflow-y: hidden;
   overflow-x: visible;
