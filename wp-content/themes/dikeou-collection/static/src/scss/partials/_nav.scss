@@ -59,7 +59,7 @@ nav{
 	&.active{
 		height: 100vh;
 		&:before{
-			content: ' ';
+			content: 'X';
 		}
 	}
 }

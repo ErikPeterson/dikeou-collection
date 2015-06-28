@@ -69,7 +69,7 @@ nav {
   nav.active {
     height: 100vh; }
     nav.active:before {
-      content: ' '; }
+      content: 'X'; }
 
 .nav-inner {
   margin-right: -1rem;

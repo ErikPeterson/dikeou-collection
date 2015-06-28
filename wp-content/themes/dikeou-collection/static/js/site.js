@@ -9,7 +9,8 @@ var Mobile = {
 Mobile.nav = function(){
 	this.$(document).on('click', 'nav', function(){
 		$(this).toggleClass('active');
-	})
+	});
+    if(this.$('body').hasClass('home')) $('nav').addClass('active');
 };
 
 (function($){
