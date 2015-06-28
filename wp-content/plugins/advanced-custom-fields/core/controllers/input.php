@@ -100,7 +100,7 @@ class acf_controller_input
 		?>
 <script type="text/javascript">
 (function($) {
-
+	$(document).ready(function(){
 	// vars
 	acf.post_id = <?php echo is_numeric($post_id) ? $post_id : '"' . $post_id . '"'; ?>;
 	acf.nonce = "<?php echo wp_create_nonce( 'acf_nonce' ); ?>";
@@ -108,11 +108,12 @@ class acf_controller_input
 	acf.ajaxurl = "<?php echo admin_url( 'admin-ajax.php' ); ?>";
 	acf.wp_version = "<?php echo $wp_version; ?>";
 	
-	
 	// new vars
 	acf.o = <?php echo json_encode( $o ); ?>;
 	acf.l10n = <?php echo json_encode( $l10n ); ?>;
 	acf.fields.wysiwyg.toolbars = <?php echo json_encode( $t ); ?>;
+		$(document).trigger('acf:ready');
+	})
 
 })(jQuery);	
 </script>

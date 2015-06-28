@@ -984,8 +984,7 @@ var acf = {
 	*  @return	N/A
 	*/
 	
-	$(document).ready(function(){
-		
+	$(document).on('acf:ready', function(){
 		
 		// update post_id
 		acf.screen.post_id = acf.o.post_id;
