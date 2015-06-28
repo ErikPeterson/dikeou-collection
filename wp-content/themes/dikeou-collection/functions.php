@@ -1,5 +1,10 @@
 <?php
 
+define( 'ACF_LITE' , true );
+
+include_once(plugin_dir_path(__FILE__).'../../plugins/advanced-custom-fields/acf.php');
+include_once(plugin_dir_path(__FILE__).'../../plugins/acf-repeater/acf-repeater.php');
+
 function create_post_types(){
 	create_artist_post_type();
 }
@@ -15,9 +20,13 @@ function create_artist_post_type(){
 		'supports' => array('title', 'editor', 'custom-fields')
  		)
 	);
+
+	include_once(plugin_dir_path(__FILE__).'fields/artisan_fields.php');
+
 }
 
 function add_actions(){
+	add_filter('acf/settings/show_admin', '__return_false');
 	add_action('init', 'create_post_types');
 }
 
