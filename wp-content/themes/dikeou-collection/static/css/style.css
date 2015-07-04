@@ -8,7 +8,6 @@ body {
   padding: 0;
   position: relative;
   width: 100vw;
-  overflow-y: hidden;
   min-height: 100vh;
   font-family: Arial, sans-serif; }
 
