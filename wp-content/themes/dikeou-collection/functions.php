@@ -1,4 +1,5 @@
 <?php
+draw_routes();
 
 define( 'ACF_LITE' , true );
 
@@ -21,7 +22,7 @@ function create_artist_post_type(){
  		)
 	);
 
-	include_once(plugin_dir_path(__FILE__).'fields/artisan_fields.php');
+	include_once(plugin_dir_path(__FILE__).'fields/artist_fields.php');
 
 }
 
@@ -31,9 +32,15 @@ function add_actions(){
 }
 
 function draw_routes(){
-	Timber::add_route('artists/:artist_slug', function($params){
-		$artist_slug = $params['artist_slug'];
-		Timber::load_template('artist.php', $artist_slug);
+	Timber::add_route('/artists/:artist_slug', function($params){
+		$query = array(
+			'name' => $params['artist_slug'],
+			'post_type' => 'artist',
+			'posts_per_page' => 1,
+			'caller_get_posts' => 1
+		);
+		
+		Timber::load_template('artist.php', $query);
 	});
 }
 
