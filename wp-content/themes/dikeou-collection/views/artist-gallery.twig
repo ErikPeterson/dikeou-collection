@@ -1,0 +1,7 @@
+<section class="artist-gallery">
+<ul class="slides">
+	{% for slide in gallery.slides %}
+		{{ include('artist-gallery-slide.twig') }}
+	{% endfor %}
+</ul>
+</section>
