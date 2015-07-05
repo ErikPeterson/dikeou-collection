@@ -1,1 +1,18 @@
 $theme-blue: #004685;
+
+@mixin no-select(){
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+@mixin bar-before($padding: 0.25em){
+	&:before{
+		@include no-select;
+		display: inline-block;
+		content: '|';
+		padding: 0 $padding;
+	}
+}

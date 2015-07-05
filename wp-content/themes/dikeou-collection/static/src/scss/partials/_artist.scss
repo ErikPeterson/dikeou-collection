@@ -87,7 +87,22 @@
 		}
 	}
 
-	div.slide-image{
+	.slide-controls{
+		@include no-select;
+		a{
+			@include no-select;
+			font-size: 1.15rem;
+		}
+		a.slide-prev, a.slide-zoom{
+			@include bar-before(0.5em);
+		}
+
+		a.slide-next{
+			padding-left: 0.25em;
+		}
+	}
+
+	.slide-image{
 		width: 100%;
 		height: 80vw;
 		position: relative;
@@ -95,39 +110,10 @@
 		background-position: 50% 50%;
 		background-repeat: no-repeat;
 		background-color: rgba(0,0,0,0);
-		transition: background-color 0.25s linear;
-		&:before, &:after{
-			display: block;
-			position: absolute;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			opacity: 0;
-			transition: opacity 0.25s linear;
-			pointer-events: none;
-		}
-		&:before{
-			content: '';
-			z-index: 1;
-			background-color: rgba(0,0,0,0.25);
-		}
-
-		&:after{
-			z-index: 2;
-			color: white;
-			text-align: center;
-			line-height: 80vw;
-			content: 'Click to Zoom';
-			letter-spacing: 0.1em;
-		}
 	}
 
-	div.slide-image:hover{
+	.slide-image:hover{
 		cursor: zoom-in;
-		&:before, &:after{
-			opacity: 1;
-		}
 	}
 
 }
