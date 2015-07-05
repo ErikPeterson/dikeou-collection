@@ -6,7 +6,7 @@
    {% if post.get_field('zing_links') %}
    <li data-modal="zing-links">Issues of zingMagazine</li>
    {% endif %}
-   {% if post.get_field('curator_statement') and post.get_field('curator_statement') is not empty %}
+   {% if post.curator_statement and post.curator_statement is not empty %}
    <li data-modal="curator-statement">Curator Statement</li>
    {% endif %}
    {% if post.get_field('artist_site_url') and post.get_field('artist_site_url') is not empty %}
@@ -16,22 +16,24 @@
 </div>
 <div class="modals">
    {% if post.get_field('artist_statement') and post.get_field('artist_statement') is not empty %}
-   <div id="artist-statment">
-   {{post.get_field('artist_statement')}}
+   <div id="artist-statement">
+   		<h3>Artist Statement</h3>
+   		{{post.get_field('artist_statement')}}
    </div>
    {% endif %}
    {% if post.get_field('zing_links') %}
    <div id="zing-links">
-   	<ul>
-   	{% for item in post.get_field('zing_links') %}
-   	<li><a href="{{item.url}}">{{item.text}}</a></li>
-   	{% endfor %}
-   	</ul>
+   		<ul>
+   			{% for item in post.get_field('zing_links') %}
+   			<li><a href="{{item.url}}">{{item.text}}</a></li>
+   			{% endfor %}
+   		</ul>
    </div>
    {% endif %}
-   {% if post.get_field('curator_statmeent') and post.get_field('curator_statement') is not empty %}
-   <div id="curator-statement">
-   {{post.get_field('curator_statement')}}
-   </div>
+   {% if post.curator_statement and post.curator_statement is not empty %}
+	<div id="curator-statement">
+		<h3>Curator Statement</h3>
+		{{post.get_field('curator_statement')}}
+	</div>
    {% endif %}
 </div>

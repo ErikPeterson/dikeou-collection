@@ -1,7 +1,8 @@
 <section class="artist-gallery">
 <ul class="slides">
 	{% for slide in gallery.slides %}
-		{{ include('artist-gallery-slide.twig') }}
+		{% set img = TimberImage(slide.image) %}
+		{{ include('artist-gallery-slide.twig', { image: img }) }}
 	{% endfor %}
 </ul>
 </section>
