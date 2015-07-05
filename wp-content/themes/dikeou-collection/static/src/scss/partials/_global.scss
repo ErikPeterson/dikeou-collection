@@ -8,6 +8,21 @@ body{
 	padding: 0;
 	position: relative;
 	width: 100vw;
+	overflow-x: hidden;
 	min-height: 100vh;
 	font-family: Arial, sans-serif;
+}
+
+#content{
+	position: relative;
+	width: 100%;
+	height: auto;
+	box-sizing: border-box;
+	padding: 0 1rem 2rem;
+	max-width: 1400px;
+}
+
+a{
+	color: $theme-blue;
+	text-decoration: none;
 }
