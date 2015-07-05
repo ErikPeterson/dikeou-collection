@@ -29,6 +29,12 @@ function create_artist_post_type(){
 function add_actions(){
 	add_filter('acf/settings/show_admin', '__return_false');
 	add_action('init', 'create_post_types');
+	add_action('after_setup_theme', 'image_sizes');
+	add_filter( 'show_admin_bar', '__return_false' );
+}
+
+function image_sizes(){
+	add_image_size('slide_full', 0, 800, false);
 }
 
 function draw_routes(){
