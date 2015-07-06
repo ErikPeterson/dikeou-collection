@@ -22,6 +22,7 @@ $context['posts'] = Timber::get_posts();
 $context['foo'] = 'bar';
 $templates = array( 'index.twig' );
 if ( is_home() ) {
+	$context['page_type'] = 'home';
 	array_unshift( $templates, 'home.twig' );
 }
 Timber::render( $templates, $context );
