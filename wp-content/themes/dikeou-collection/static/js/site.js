@@ -51,19 +51,19 @@ Slideshow.prototype.goto = function(index){
 
 		if($current.hasClass(this.options.toggle_class)) $current.removeClass(this.options.toggle_class);
 		$next.addClass(this.options.toggle_class);
-
+		this.index = index;
 		if(this.options.events['slide:change']) this.options.events['slide:change']($next, $current);
 };
 
 Slideshow.prototype.next = function(e){
 	e.preventDefault();
-	var nextIndex = (this.index + 1) > this._length ? 0 : this.index + 1;
+	var nextIndex = (this.index + 1) >= this._length ? 0 : this.index + 1;
 	this.goto(nextIndex);
 };
 
 Slideshow.prototype.prev = function(e){
 	e.preventDefault();
-	var prevIndex = this.index > 0 ? this.index -1 : this.length - 1;
+	var prevIndex = this.index > 0 ? this.index - 1 : this._length - 1;
 	this.goto(prevIndex);
 }
 

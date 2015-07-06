@@ -75,14 +75,15 @@
 	}
 
 	li.artist-slide{
-		position: relative;
+		position: absolute;
 		left: 100%;
+		top: 0;
 		width: 100%;
 		height: auto;
 		display: block;
-		transition: left 0.25s linear;
 
 		&.active{
+			position: relative;
 			left: 0;
 		}
 	}
