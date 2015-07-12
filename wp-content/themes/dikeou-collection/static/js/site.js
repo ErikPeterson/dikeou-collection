@@ -68,56 +68,62 @@ Slideshow.prototype.prev = function(e){
 }
 
 
-var Mobile = {
+var Site = {
 	init: function(page, $){
-		this.$ = $;
-		this.nav();
+		this.mobile = window.innerWidth < 640;
 		if(page in this) this[page].init();
+		if(this.mobile) this.global.mobile.nav();
 	},
-	artist: {
-		init: function(){
-			this.menu();
-			this.slideshows();
-		},
-		menu: function(){
-
-		},
-		slideshows: function(){
-			var options = {
-				slide_selector: '.artist-slide',
-				toggle_class: 'active',
-				controls: {
-					prev: '.slide-prev',
-					next: '.slide-next',
-					modal: {
-						handle: '.slide-zoom',
-						modal: '.slide-modal'
-					}
-				},
-				events: {
-					'slide:ready': function($slide){
-						var $handle  = $slide.find('.slide-open'),
-							$content = $slide.find('.slide-content');
-
-							$handle.click(function(){$content.toggleClass('open')}); 
-					}
-				}
-			};
-
-			$('.artist-gallery .slides').each(function(){
-				new Slideshow($(this), options);
-			});
+	global: {
+		mobile:	{
+			nav: function(){
+				$(document).on('click', 'nav', function(){
+					$(this).toggleClass('active');
+				});
+			    if($('body').hasClass('home')) $('nav').addClass('active');
+			}
 		}
 	}
 };
 
-Mobile.nav = function(){
-	this.$(document).on('click', 'nav', function(){
-		$(this).toggleClass('active');
-	});
-    if(this.$('body').hasClass('home')) $('nav').addClass('active');
+Site.artist = {
+	init: function(){
+		this.menu();
+		this.slideshows();
+	},
+		menu: function(){
+
+	},
+	slideshows: function(){
+		var options = {
+			slide_selector: '.artist-slide',
+			toggle_class: 'active',
+			controls: {
+				prev: '.slide-prev',
+				next: '.slide-next',
+				modal: {
+					handle: '.slide-zoom',
+					modal: '.slide-modal'
+				}
+			},
+			events: {
+				'slide:ready': function($slide){
+					var $handle  = $slide.find('.slide-open'),
+						$content = $slide.find('.slide-content');
+
+						$handle.click(function(){$content.toggleClass('open')}); 
+				}
+			}
+		};
+
+		$('.artist-gallery .slides').each(function(){
+			new Slideshow($(this), options);
+		});
+	}
 };
 
+
+
 (function($){
-	if(window.innerWidth < 641) return Mobile.init($('body').data('template'), $);
+	Site.init($('body').data('template'));
 }(jQuery))
