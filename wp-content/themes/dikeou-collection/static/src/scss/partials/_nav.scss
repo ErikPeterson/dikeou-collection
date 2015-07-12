@@ -6,6 +6,18 @@ body > .left{
 	margin-bottom: 1rem;
 	height: 4rem;
 	overflow-y: visible;
+
+	@media screen and (min-width: $tablet){
+		width: 160px;
+		position: absolute;
+		left: 0.5rem;
+		top: 15%;
+		height: auto;
+		margin-bottom: 0;
+		padding: 0.5rem;
+		z-index: 1;
+		box-sizing: border-box;
+	}
 }
 
 .logo{
@@ -15,11 +27,27 @@ body > .left{
 	max-width: 50%;
 	position: relative;
 	z-index: 4;
+
 	img{
 		position: relative;
 		top: -0.5rem;
 		height: 3rem;
 		width: auto;
+	}
+
+	@media screen and (min-width: $tablet){
+		display: block;
+		width: 100%;
+		max-width: none;
+		height: auto;
+		float: none;
+		box-sizing: border-box;
+		padding-left: 1.25rem;
+		img{
+			width: auto;
+			max-height: none;
+			height: auto;
+		}
 	}
 }
 
@@ -38,11 +66,11 @@ nav{
 	overflow-y: hidden;
 	overflow-x: visible;
 	z-index: 1;
-	top: .5rem;
-	right: .5rem;
+	top: 0;
+	right: 0;
 	&:before{
-		top: 0;
-		right: 0;
+		top: 0.5rem;
+		right: 0.5rem;
 		pointer-events: none;
 		content: '▼';
 		display: block;
@@ -60,6 +88,16 @@ nav{
 		height: 100vh;
 		&:before{
 			content: 'X';
+		}
+	}
+
+	@media screen and (min-width: $tablet){
+		float: none;
+		padding-top: 1rem;
+		right: 0;
+
+		&:before{
+			content: none;
 		}
 	}
 }
@@ -101,69 +139,24 @@ nav{
 			color: $theme-blue;
 		}
 	}
+
+	@media screen and (min-width: $tablet){
+		text-align: left;
+
+		> li{
+			padding: 0.75rem 0 0.75rem 0.5rem;
+		}
+
+	}
 }
 
 @media screen and (min-width: $tablet){
-	body > .left{
-		width: 160px;
-		position: absolute;
-		left: 0;
-		top: 15%;
-		height: auto;
-		margin-bottom: 0;
-		padding: 0.5rem;
-		z-index: 1;
-	}
-
-	.logo{
-		display: block;
-		width: 100%;
-		max-width: none;
-		height: auto;
-		float: none;
-		box-sizing: border-box;
-		padding-left: 1.25rem;
-		img{
-			width: auto;
-			max-height: none;
-			height: auto;
-		}
-	}
-
-	nav{
-		float: none;
-		padding-top: 1rem;
-		right: 0;
-	}
 
 	nav, .nav-inner{
 		position: relative;
 		width: 100%;
 		top: 0;
 		height: auto;
-	}
-
-	nav:before{
-		content: none;
-	}
-	.nav-links{
-		text-align: left;
-	}
-	.nav-links > li{
-		padding: 0.75rem 0 0.75rem 0.5rem;
-	}
-
-	#content{
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: auto;
-		max-width: 1400px;
-		box-sizing: border-box;
-		padding-left: 180px;
-		margin-top: 15%;
-		z-index: 0;
 	}
 
 }

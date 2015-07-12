@@ -1,3 +1,5 @@
+
+
 .artist-header{
 	h1{
 		text-transform: lowercase;
@@ -111,11 +113,43 @@
 		background-position: 50% 50%;
 		background-repeat: no-repeat;
 		background-color: rgba(0,0,0,0);
+		
+		@media screen and (min-width: $tablet){
+			height: 350px;
+
+		}	
+
+		@media screen and (min-width: 750px){
+			height: 400px;
+
+		}
+
+		@media screen and (min-width: 850px){
+			height: 500px;
+		}
+
+		@media screen and (min-width: $desktop){
+			height: 625px;
+		}
+
+		@media screen and (min-width: 1200px){
+			height: 700px;
+		}
+
+		@media screen and (min-width: 1300px){
+			height: 800px;
+		}
 	}
 
 	.slide-image:hover{
 		cursor: zoom-in;
 	}
 
+
 }
 
+@media screen and (min-width: $tablet){
+	body[data-template="artist"] #content{
+		padding-left: 200px;
+	}
+}

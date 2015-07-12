@@ -26,3 +26,19 @@ a{
 	color: $theme-blue;
 	text-decoration: none;
 }
+
+@media screen and (min-width: $tablet){
+	#content{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: auto;
+		max-width: 1400px;
+		box-sizing: border-box;
+		padding-left: 180px;
+		padding-right: 2rem;
+		margin-top: 15vh;
+		z-index: 0;
+	}
+}
