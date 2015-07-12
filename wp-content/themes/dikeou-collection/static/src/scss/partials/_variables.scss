@@ -1,5 +1,10 @@
 $theme-blue: #004685;
 
+//sizes
+$tablet: 641px;
+$desktop: 1025px;
+
+
 @mixin no-select(){
 	-webkit-user-select: none;
 	-moz-user-select: none;

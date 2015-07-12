@@ -102,3 +102,68 @@ nav{
 		}
 	}
 }
+
+@media screen and (min-width: $tablet){
+	body > .left{
+		width: 160px;
+		position: absolute;
+		left: 0;
+		top: 15%;
+		height: auto;
+		margin-bottom: 0;
+		padding: 0.5rem;
+		z-index: 1;
+	}
+
+	.logo{
+		display: block;
+		width: 100%;
+		max-width: none;
+		height: auto;
+		float: none;
+		box-sizing: border-box;
+		padding-left: 1.25rem;
+		img{
+			width: auto;
+			max-height: none;
+			height: auto;
+		}
+	}
+
+	nav{
+		float: none;
+		padding-top: 1rem;
+		right: 0;
+	}
+
+	nav, .nav-inner{
+		position: relative;
+		width: 100%;
+		top: 0;
+		height: auto;
+	}
+
+	nav:before{
+		content: none;
+	}
+	.nav-links{
+		text-align: left;
+	}
+	.nav-links > li{
+		padding: 0.75rem 0 0.75rem 0.5rem;
+	}
+
+	#content{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: auto;
+		max-width: 1400px;
+		box-sizing: border-box;
+		padding-left: 180px;
+		margin-top: 15%;
+		z-index: 0;
+	}
+
+}
