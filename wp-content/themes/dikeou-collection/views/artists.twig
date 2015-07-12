@@ -1,0 +1,7 @@
+{% extends "base.twig" %}
+{% block content %}
+	{% for i in 1..column_count %}
+		{{ include('artists_nav_column.twig', { 'column': i - 1 }) }}
+	{% endfor %}
+	
+{% endblock %}

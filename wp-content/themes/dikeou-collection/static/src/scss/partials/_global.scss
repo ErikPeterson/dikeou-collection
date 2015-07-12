@@ -25,6 +25,10 @@ body{
 a{
 	color: $theme-blue;
 	text-decoration: none;
+
+	&:hover, &.active{
+		color: $theme-green;
+	}
 }
 
 @media screen and (min-width: $tablet){

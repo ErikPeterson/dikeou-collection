@@ -38,6 +38,19 @@ function image_sizes(){
 }
 
 function draw_routes(){
+	Timber::add_route('/artists', function(){
+		$query = array(
+			'post_type' => 'artist',
+			'no_paging' => true,
+			'caller_get_posts' => 1,
+			'posts_per_page' => -1,
+			'order' => 'ASC',
+			'orderby' => 'title'
+			);
+
+		Timber::load_template('artists.php', $query);
+	});
+
 	Timber::add_route('/artists/:artist_slug', function($params){
 		$query = array(
 			'name' => $params['artist_slug'],

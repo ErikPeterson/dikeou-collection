@@ -1,0 +1,47 @@
+.column{
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	box-sizing: border-box;
+	&:first-of-type li:first-child{
+		border-top: 1px solid $theme-blue;
+	}
+
+	@media screen and (min-width: $tablet){
+		width: 50%;
+		float: left;
+		padding-right: 0.5rem;
+		li:first-child{
+			border-top: 1px solid $theme-blue;
+		}
+
+		&:nth-of-type(3) li:first-child{
+			border-top: none;
+		}
+	}
+
+	@media screen and (min-width: 900px){
+		width: 33%;
+		max-width: 310px;
+		padding-right: 1.5rem;
+		&:nth-of-type(3) li:first-child{
+			border-top: 1px solid $theme-blue;
+		}
+	}
+}
+
+.column li{
+	border-bottom: 1px solid $theme-blue;
+	display: block;
+	width: 100%;
+	height: auto;
+	text-align: center;
+	> a {
+		padding: 1rem 0.5rem;
+		display: inline-block;
+		text-transform: lowercase;
+	}
+}
