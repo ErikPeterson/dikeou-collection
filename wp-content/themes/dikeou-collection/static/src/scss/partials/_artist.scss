@@ -41,13 +41,17 @@
   	.modals > div{
   		position: absolute;
   		left: 0;
-  		bottom: 0;
+  		top: 0;
+  		background-color: white;
   		width: 100%;
   		max-height: 0;
   		height: auto;
-  		transition: max-height 0.25s linear;
   		z-index: 2;
   		overflow-y: hidden;
+
+  		> .modal-inner{
+  			padding: 3rem 1rem;
+  		}
   	}
 
   	.modals > div.active{

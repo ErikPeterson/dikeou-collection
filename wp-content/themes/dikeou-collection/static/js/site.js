@@ -91,8 +91,22 @@ Site.artist = {
 		this.menu();
 		this.slideshows();
 	},
-		menu: function(){
+	menu: function(){
 
+		$(document).on('click', '[data-modal]', function(e){
+			e.preventDefault();
+
+			var $handle      = $(this);
+			var $newModal    = $('#' + $handle.data('modal'));
+			var $activeModal = $('.modals > .active');
+			
+			if($activeModal){
+				$activeModal.removeClass('active')
+				if($activeModal[0] == $newModal[0]) return;
+			} 
+
+			$newModal.addClass('active');			
+		});
 	},
 	slideshows: function(){
 		var options = {

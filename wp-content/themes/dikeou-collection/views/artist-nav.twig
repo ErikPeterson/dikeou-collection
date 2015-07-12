@@ -17,23 +17,29 @@
 <div class="modals">
    {% if post.get_field('artist_statement') and post.get_field('artist_statement') is not empty %}
    <div id="artist-statement">
+      <div class="modal-inner">
    		<h3>Artist Statement</h3>
    		{{post.get_field('artist_statement')}}
+      </div>
    </div>
    {% endif %}
    {% if post.get_field('zing_links') %}
    <div id="zing-links">
+      <div class="modal-inner">
    		<ul>
    			{% for item in post.get_field('zing_links') %}
    			<li><a href="{{item.url}}">{{item.text}}</a></li>
    			{% endfor %}
    		</ul>
+      </div>
    </div>
    {% endif %}
    {% if post.curator_statement and post.curator_statement is not empty %}
 	<div id="curator-statement">
-		<h3>Curator Statement</h3>
-		{{post.get_field('curator_statement')}}
+      <div class="modal-inner">
+   		<h3>Curator Statement</h3>
+   		{{post.get_field('curator_statement')}}
+      </div>
 	</div>
    {% endif %}
 </div>

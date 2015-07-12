@@ -124,25 +124,26 @@ nav{
 	list-style: none;
 	background-color: white;
 	padding-top: 1rem;
-	> li{
+
+	> a > li{
 		display: block;
 		box-sizing: border-box;
 		width: 100%;
 		height: auto;
 		padding: 1rem 0.5rem;
 		border-bottom: 1px solid $theme-blue;
-		&:first-child{
-			border-top: 1px solid $theme-blue;
-		}
-		> a{
-			text-decoration: none;
-			color: $theme-blue;
-		}
+	}
+
+	a{
+		text-decoration: none;
+		color: $theme-blue;
 	}
 
 	@media screen and (min-width: $tablet){
 		text-align: left;
-
+		padding-top: 0;
+		margin-top: 1rem;
+		border-top: 1px solid $theme-blue;
 		> li{
 			padding: 0.75rem 0 0.75rem 0.5rem;
 		}
