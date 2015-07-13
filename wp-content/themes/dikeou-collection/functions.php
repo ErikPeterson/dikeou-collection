@@ -8,6 +8,7 @@ include_once(plugin_dir_path(__FILE__).'../../plugins/acf-repeater/acf-repeater.
 
 function create_post_types(){
 	create_artist_post_type();
+	create_contact_page();
 }
 
 function create_artist_post_type(){
@@ -22,15 +23,55 @@ function create_artist_post_type(){
  		)
 	);
 
-	include_once(plugin_dir_path(__FILE__).'fields/artist_fields.php');
+	include_once(plugin_dir_path(__FILE__).'fields/contact_fields.php');
 
+}
+
+function create_contact_page(){
+
+	include_once(plugin_dir_path(__FILE__).'fields/artist_fields.php');
 }
 
 function add_actions(){
 	add_filter('acf/settings/show_admin', '__return_false');
+	add_filter('acf/location/rule_types', 'add_choices');
+	add_filter('acf/location/rule_values/page_name', 'add_page_name_rule');
+	add_filter('acf/location/rule_match/page_name', 'add_page_name_match', 10, 3);
 	add_action('init', 'create_post_types');
 	add_action('after_setup_theme', 'image_sizes');
 	add_filter( 'show_admin_bar', '__return_false' );
+}
+
+function add_choices($choices){
+	$choices['Page']['page_name'] = 'Page Name';
+
+	return $choices;
+}
+
+function add_page_name_rule($choices){
+	$posts = Timber::get_posts(array(
+		'post_type' => 'page',
+		'posts_per_page' => -1
+		));
+	
+	if($posts)
+	{
+		foreach( $posts as $post ){
+			$choices[$post->post_name] = $post->post_name;
+		}
+	}
+
+	return $choices;
+}
+
+function add_page_name_match($match, $rule, $options){
+	$post = Timber::get_post($options['post_id']);
+	$selected_post = $rule['value'];
+	if($rule['operator'] == "=="){
+		$match = ($post->post_name == $selected_post);
+	}
+
+	return $match;
 }
 
 function image_sizes(){
@@ -63,7 +104,13 @@ function draw_routes(){
 	});
 
 	Timber::add_route('/contact', function(){
-		Timber::load_template('contact_page.php');
+		$query = array(
+			'post_type' => 'page',
+			'page_name' => 'contact',
+			'posts_per_page' => 1
+		);
+
+		Timber::load_template('contact_page.php', $query);
 	});
 }
 
