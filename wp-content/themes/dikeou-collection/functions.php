@@ -61,6 +61,10 @@ function draw_routes(){
 		
 		Timber::load_template('artist.php', $query);
 	});
+
+	Timber::add_route('/contact', function(){
+		Timber::load_template('contact_page.php');
+	});
 }
 
 

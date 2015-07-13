@@ -138,6 +138,7 @@ Site.artist = {
 
 
 
+
 (function($){
 	Site.init($('body').data('template'));
 }(jQuery))

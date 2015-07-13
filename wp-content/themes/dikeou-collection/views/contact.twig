@@ -1,0 +1,53 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="single">
+		<div class="contact-nav">
+			<ul>
+				<li><a href="#contact">Contact</a></li>
+				<li><a href="#newsletter">Newsletter</a></li>
+				<li><a href="#location">Location</a></li>
+				<li><a href="#internship">Internship</a></li>
+			</ul>
+		</div>
+		<article id="contact">
+			<h2>Contact</h2>
+
+			<h3>Email: </h3>
+			<a href="mailto:devon@dikeoucollection.org">Devon - Curator</a><br />
+			<a href="mailto:sarah@dikeoucollection.org">Sarah - Management</a><br />
+			<a href="mailto:stanley@dikeoucollection.org">Stanley - Appointments</a>
+			
+			<h3>Hours</h3>
+			<p>Wed-Fri, 11am-5pm or by appointment.<br />
+			For appointments or other inquiries, please<br />
+			call (303) 623-3001, or email <a href="mailto:info@dikeoucollection.org">info@dikeoucollection.org</a></p>
+		</article>
+		<article id="newsletter">
+			<h2>Newsletter Signup</h2>
+			<form action="/newsletter" method="get">
+				<input type="email" name="email" placeholder="Enter Email" />
+				<button type="submit">Submit</button>
+			</form>
+		</article>
+		<article id="location">
+			<h2>Location</h2>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2832.7235418793293!2d-104.99146136594591!3d39.74484158278594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x75363e298555f127!2sDikeou+Collection!5e0!3m2!1sen!2sus!4v1436740463696" width="320" height="280" frameborder="0" style="border:0" allowfullscreen></iframe>
+			<br />
+			<h3>The Colorado Building</h3>
+			<p>1615 California St. (at 15th St.) Suit 515<br>
+			Denver, CO 80202
+			</p>
+			<p>Parking available on 15th and Stout at commercial parking lots</p>
+		</article>
+		<article id="internship">
+			<h2>Internship Program</h2>
+			<p>
+			</p>
+			<p>
+			</p>
+			<p>
+			</p>
+		</article>
+	</div>
+{% endblock %}

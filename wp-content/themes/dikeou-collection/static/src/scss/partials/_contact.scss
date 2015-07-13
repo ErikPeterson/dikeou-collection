@@ -1,0 +1,39 @@
+.contact-nav{
+	> ul {
+		list-style: none;
+		display: block;
+		width: 100%;
+		height: auto;
+		margin: 0;
+		padding: 0;
+	}
+
+	li{
+		display: inline-block;
+		&:not(:first-of-type){
+			@include bar-before;
+		}
+	}
+}
+
+#newsletter form{
+	input{
+		box-sizing: border-box;
+		width: 310px;
+		padding: .75em;
+		font-size: 1em;
+		display: block;
+		border: 1px solid black;
+		margin-bottom: 1em;
+	}
+	button{
+		display: block;
+		color: white;
+		border: none;
+		font-size: 1em;
+		padding: 1rem 0;
+		width: 310px;
+		text-align: center;
+		background-color: $theme-blue;
+	}
+}
