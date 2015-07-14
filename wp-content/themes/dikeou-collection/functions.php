@@ -9,6 +9,7 @@ include_once(plugin_dir_path(__FILE__).'../../plugins/acf-repeater/acf-repeater.
 function create_post_types(){
 	create_artist_post_type();
 	create_contact_page();
+	create_events_post_type();
 }
 
 function create_artist_post_type(){
@@ -23,13 +24,26 @@ function create_artist_post_type(){
  		)
 	);
 
-	include_once(plugin_dir_path(__FILE__).'fields/contact_fields.php');
-
+	include_once(plugin_dir_path(__FILE__).'fields/artist_fields.php');
 }
 
 function create_contact_page(){
+	include_once(plugin_dir_path(__FILE__).'fields/contact_fields.php');
+}
 
-	include_once(plugin_dir_path(__FILE__).'fields/artist_fields.php');
+function create_events_post_type(){
+	register_post_type('event',
+		array(
+		'public' => true,
+		'has_archive' => true,
+		'label' => 'Events',
+		'show_in_menu' => true,
+		'description' => 'Event pages',
+		'supports' => array('title', 'editor', 'custom-fields')
+ 		)
+	);
+
+	include_once(plugin_dir_path(__FILE__).'fields/event_fields.php');
 }
 
 function add_actions(){
