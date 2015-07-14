@@ -112,6 +112,16 @@ function draw_routes(){
 
 		Timber::load_template('contact_page.php', $query);
 	});
+
+	Timber::add_route('/about', function(){
+		$query = array(
+			'post_type' => 'page',
+			'page_name' => 'about',
+			'posts_per_page' => 1
+		);
+
+		Timber::load_template('about_page.php', $query);
+	});
 }
 
 
