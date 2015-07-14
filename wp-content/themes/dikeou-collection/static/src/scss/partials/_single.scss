@@ -26,4 +26,13 @@ article{
 	@media screen and (min-width: $desktop){
 		margin-top:6rem;
 	}
+
+	&:first-child{
+		margin-top: 1rem;
+		
+		@media screen and (min-width: $tablet){
+			margin-top: 0rem;
+		}
+
+	}
 }
