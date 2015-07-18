@@ -1,0 +1,8 @@
+<section class="{{class}}">
+<ul class="slides">
+	{% for slide in gallery.slides %}
+		{% set img = TimberImage(slide.image) %}
+		{{ include('gallery-slide.twig', { image: img }) }}
+	{% endfor %}
+</ul>
+</section>
