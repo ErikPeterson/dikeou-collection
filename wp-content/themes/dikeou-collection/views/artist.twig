@@ -7,7 +7,7 @@
 	</div>
 	<div class="artist-body">
 	{% for gallery in post.get_field('artist_galleries') %}
-		{{ include('artist-gallery.twig') }}
+		{% include 'gallery.twig' with {'class': 'gallery'} %}
 	{% endfor %}
 	</div>
 {% endblock %}
