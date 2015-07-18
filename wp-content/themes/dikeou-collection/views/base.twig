@@ -13,7 +13,7 @@
 		</div>
 		<nav>
 			<div class="nav-inner">
-			<ul class="nav-links"">
+			<ul class="nav-links">
 				<a href="/artists" class="{% if page_type == 'artists' %}active{% endif %}"><li>Artists</li></a>
 				<a href="/events" class="{% if page_type == 'event' %}active{% endif %}"><li>Events</li></a>
 				<a href="/contact" class="{% if page_type == 'contact' %}active{% endif %}"><li>Contact</li></a>
@@ -32,6 +32,7 @@
 			</div>
 		</section>
 	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="{{site.theme.link}}/static/js/jquery-ui.min.js"></script>
 	<script src="{{site.theme.link}}/static/js/site.js"></script>
 	</body>
 </html>
