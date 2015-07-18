@@ -131,6 +131,32 @@ function draw_routes(){
 		Timber::load_template('artist.php', $query);
 	});
 
+	Timber::add_route('/events', function(){
+		$params = $_GET;
+		error_log(implode(", ", $params));
+		if(array_key_exists('date', $params)){
+			$query = array(
+				'post_type' => 'event',
+				'no_paging' => true,
+				'caller_get_posts' => 1,
+				'posts_per_page' => -1,
+				'orderby' => 'title',
+				'meta_key' => 'event_date',
+				'meta_value' => $params['date'],
+
+			);
+			Timber::load_template('events-by-date.php', $query);
+		} else {
+			$page = array_key_exists('p', $params) ? intval($params['p']) : 0;
+			$events_data = get_events_by_ordinal_month($page);
+			if(!$events_data) return Timber::load_template('single.php', false, 404);
+			$query = $events_data[0];
+			$params['next_page'] = $events_data[1];
+			$params['prev_page'] = $events_data[2];
+			Timber::load_template('events-paged.php', $query, 200, $params);
+		}
+	});
+
 	Timber::add_route('/events/:event_slug', function($params){
 		$query = array(
 			'name' => $params['event_slug'],
@@ -161,6 +187,42 @@ function draw_routes(){
 
 		Timber::load_template('about_page.php', $query);
 	});
+}
+
+function get_events_by_ordinal_month($page){
+	global $wpdb;
+
+	$unique_dates = $wpdb->get_col("
+		SELECT DISTINCT	pm.meta_value FROM {$wpdb->postmeta} pm
+		LEFT JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+		WHERE pm.meta_key = 'event_date'
+		AND p.post_status = 'publish'
+		AND p.post_type='event'
+	");
+
+	$unique_year_months = array_unique(array_map('chop_year_month', $unique_dates));
+	$this_month = array_key_exists($page, $unique_year_months) ? $unique_year_months[$page] : false;
+	if(!$this_month) return false;
+	$next_month = array_key_exists($page + 1, $unique_year_months) ? $page + 1 : false;
+	$prev_month = $page > 0 ? $page - 1 : false;
+
+	$query = array(
+		'post_type' => 'event',
+		'numberposts' => -1,
+		'order' => 'DESC',
+		'orderby' => 'meta_value',
+		'meta_query' => array(
+			'compare' => 'REGEXP /\d{6}/',
+			'key' => 'event_date',
+			'value' => $this_month
+		)
+	);
+
+	return [$query, $next_month, $prev_month];
+}
+
+function chop_year_month($date){
+	return substr($date, 0, 6);
 }
 
 

@@ -1,0 +1,17 @@
+{% for post in posts %}
+	<article class="event">
+		<h2>{{post.event_time}}</h2>
+		<div class="event-content">
+		<img src="{{post.thumbnail.get_src('event')}}">
+			<div class="event-text">
+				<h1>{{post.title}}</h1>
+
+				{{post.content}}
+
+				{% if post.video_url and post.video_url is not empty %}
+				<h3><a href="{{ post.video_url }}">Watch Event Video</a></h3>
+				{% endif %}
+			</div>
+		</div>
+	</article>
+{% endfor %}
