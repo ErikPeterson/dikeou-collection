@@ -9,7 +9,7 @@ if(function_exists("register_field_group"))
 			array (
 				'key' => 'field_55a59f02d3fa8',
 				'label' => 'Event Date',
-				'name' => 'date',
+				'name' => 'event_date',
 				'type' => 'date_picker',
 				'instructions' => 'Choose the date of the event.',
 				'required' => 1,

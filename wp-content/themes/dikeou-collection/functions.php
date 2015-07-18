@@ -39,7 +39,7 @@ function create_events_post_type(){
 		'label' => 'Events',
 		'show_in_menu' => true,
 		'description' => 'Event pages',
-		'supports' => array('title', 'editor', 'custom-fields')
+		'supports' => array('title', 'editor', 'custom-fields', 'thumbnail')
  		)
 	);
 
@@ -47,6 +47,8 @@ function create_events_post_type(){
 }
 
 function add_actions(){
+	add_theme_support( 'post-thumbnails' );
+	add_filter('get_twig', 'twig_functions');
 	add_filter('acf/settings/show_admin', '__return_false');
 	add_filter('acf/location/rule_types', 'add_choices');
 	add_filter('acf/location/rule_values/page_name', 'add_page_name_rule');
@@ -54,6 +56,16 @@ function add_actions(){
 	add_action('init', 'create_post_types');
 	add_action('after_setup_theme', 'image_sizes');
 	add_filter( 'show_admin_bar', '__return_false' );
+}
+
+function twig_functions($twig){
+	$twig->addFilter('date_link', new Twig_Filter_Function('format_date_link'));
+	return $twig;
+}
+
+function format_date_link($string){
+	$output = '<a href="/events/?date=' . $string . '">' . preg_replace('/(\d{4})(\d{2})(\d{2})/', '\2/\3/\1', $string) . '</a>';
+	return $output;
 }
 
 function add_choices($choices){
@@ -90,6 +102,8 @@ function add_page_name_match($match, $rule, $options){
 
 function image_sizes(){
 	add_image_size('slide_full', 0, 800, false);
+	add_image_size('header', 1400, 0, false);
+	add_image_size('event', 600, 600, array('center', 'center'));
 }
 
 function draw_routes(){
@@ -113,8 +127,19 @@ function draw_routes(){
 			'posts_per_page' => 1,
 			'caller_get_posts' => 1
 		);
-		
+
 		Timber::load_template('artist.php', $query);
+	});
+
+	Timber::add_route('/events/:event_slug', function($params){
+		$query = array(
+			'name' => $params['event_slug'],
+			'post_type' => 'event',
+			'posts_per_page' => 1,
+			'caller_get_posts' => 1
+		);
+		
+		Timber::load_template('event.php', $query);
 	});
 
 	Timber::add_route('/contact', function(){

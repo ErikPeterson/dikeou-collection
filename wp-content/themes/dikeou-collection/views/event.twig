@@ -1,0 +1,18 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="event-header">
+		<img class="header-image" src="{{ post.thumbnail.get_src('header') }}" />
+		<h1>{{post.post_title }}</h1>
+		<h2>{{ post.event_date|date_link }}</h2>
+	</div>
+	<div class="event-body">
+	<section class="event-description">
+		<h3><a href="{{ post.video_url}}">Event Video</a></h3>
+		{{ post.content }}
+	</section>
+	{% for gallery in post.get_field('event_galleries') %}
+		{% include 'gallery.twig' with {'class': 'gallery', 'gallery': gallery} %}
+	{% endfor %}
+	</div>
+{% endblock %}

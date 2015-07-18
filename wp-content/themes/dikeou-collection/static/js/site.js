@@ -110,7 +110,7 @@ Site.artist = {
 	},
 	slideshows: function(){
 		var options = {
-			slide_selector: '.artist-slide',
+			slide_selector: '.slide',
 			toggle_class: 'active',
 			controls: {
 				prev: '.slide-prev',
@@ -130,7 +130,36 @@ Site.artist = {
 			}
 		};
 
-		$('.artist-gallery .slides').each(function(){
+		$('.gallery .slides').each(function(){
+			new Slideshow($(this), options);
+		});
+	}
+};
+
+Site.event = {
+	init: function(){
+		var options = {
+			slide_selector: '.slide',
+			toggle_class: 'active',
+			controls: {
+				prev: '.slide-prev',
+				next: '.slide-next',
+				modal: {
+					handle: '.slide-zoom',
+					modal: '.slide-modal'
+				}
+			},
+			events: {
+				'slide:ready': function($slide){
+					var $handle  = $slide.find('.slide-open'),
+						$content = $slide.find('.slide-content');
+
+						$handle.click(function(){$content.toggleClass('open')}); 
+				}
+			}
+		};
+
+		$('.gallery .slides').each(function(){
 			new Slideshow($(this), options);
 		});
 	}

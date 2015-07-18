@@ -31,6 +31,12 @@ a{
 	}
 }
 
+.header-image{
+	display: block;
+	position: relative;
+	width: 100%;
+}
+
 @media screen and (min-width: $tablet){
 	#content{
 		position: absolute;
