@@ -133,7 +133,6 @@ function draw_routes(){
 
 	Timber::add_route('/events', function(){
 		$params = $_GET;
-		error_log(implode(", ", $params));
 		if(array_key_exists('date', $params)){
 			$query = array(
 				'post_type' => 'event',
@@ -147,7 +146,8 @@ function draw_routes(){
 			);
 			Timber::load_template('events-by-date.php', $query);
 		} else {
-			$page = array_key_exists('p', $params) ? intval($params['p']) : 0;
+			$now = date('Ym');
+			$page = array_key_exists('month', $params) ? $params['month'] : $now;
 			$events_data = get_events_by_ordinal_month($page);
 			if(!$events_data) return Timber::load_template('single.php', false, 404);
 			$query = $events_data[0];
@@ -191,20 +191,17 @@ function draw_routes(){
 
 function get_events_by_ordinal_month($page){
 	global $wpdb;
+	
+	$current = new DateTime(preg_replace("/(\d{4})({\d{2})/", '\1-\2-01', $page));
+	$this_month = $current->format('Ym');
 
-	$unique_dates = $wpdb->get_col("
-		SELECT DISTINCT	pm.meta_value FROM {$wpdb->postmeta} pm
-		LEFT JOIN {$wpdb->posts} p ON p.ID = pm.post_id
-		WHERE pm.meta_key = 'event_date'
-		AND p.post_status = 'publish'
-		AND p.post_type='event'
-	");
+	$last_month = clone $current;
+	$last_month -> sub(new DateInterval('P1M'));
+	$last_month = $last_month -> format('Ym');
 
-	$unique_year_months = array_unique(array_map('chop_year_month', $unique_dates));
-	$this_month = array_key_exists($page, $unique_year_months) ? $unique_year_months[$page] : false;
-	if(!$this_month) return false;
-	$next_month = array_key_exists($page + 1, $unique_year_months) ? $page + 1 : false;
-	$prev_month = $page > 0 ? $page - 1 : false;
+	$next_month = clone $current;
+	$next_month -> add(new DateInterval('P1M'));
+	$next_month = $next_month->format('Ym');
 
 	$query = array(
 		'post_type' => 'event',
@@ -212,13 +209,15 @@ function get_events_by_ordinal_month($page){
 		'order' => 'DESC',
 		'orderby' => 'meta_value',
 		'meta_query' => array(
-			'compare' => 'REGEXP /\d{6}/',
+			array(
+			'compare' => 'REGEXP',
 			'key' => 'event_date',
-			'value' => $this_month
-		)
+			'value' => '^'. $this_month
+			),
+		),
 	);
 
-	return [$query, $next_month, $prev_month];
+	return [$query, $next_month, $last_month];
 }
 
 function chop_year_month($date){

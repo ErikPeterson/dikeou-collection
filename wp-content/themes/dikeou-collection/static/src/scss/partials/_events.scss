@@ -1,0 +1,83 @@
+body[data-template="events"]{
+	.wrapper{
+		@media screen and (min-width: $desktop){
+			padding-left: 5%;
+			overflow: hidden;
+			box-sizing: border-box;
+		}
+	}
+}
+
+.calendar-container{
+	width: 100%;
+	height: auto;
+	position: relative;
+	display: block;
+
+	@media screen and(min-width: $desktop){
+		float: right;
+		width: 25%;
+		height: auto;
+	}
+
+ .ui-datepicker{
+		width: 100%;
+		box-sizing: border-box;
+	}
+}
+section.events{
+	> h1 {
+		font-size: 2rem;
+	}
+	.pagination{
+		max-width: 640px;
+		div{
+			display: inline-block;
+			&:not(:last-child):not(:first-child){
+				padding: 0 1rem;
+				font-weight: bold;
+			}
+		}
+	}
+	@media screen and(min-width: $desktop){
+		float: left;
+		width: 75%;
+		height: auto;
+	}
+}
+
+article.event{
+	box-sizing: border-box;
+	.event-content{
+		width: 100%;
+		height: auto;
+		clear: both;
+		overflow: hidden;
+	}
+
+	img{
+		max-width: 100%;
+		@media screen and(min-width: $tablet){
+			width: 50%;
+			max-width: 400px;
+			float: left;
+		}
+	}
+
+	.event-text{
+
+		@media screen and(min-width: $tablet){
+			
+			h1{
+				margin-top: 0;
+			}
+
+			width: auto;
+			max-width: 800px;
+			float: left;
+			padding-left: 1rem;
+			box-sizing: border-box;
+		}
+	}
+
+}

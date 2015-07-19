@@ -1,3 +1,18 @@
+var Months = {
+	'01': 'January',
+	'02': 'February',
+	'03': 'March',
+	'04': 'April',
+	'05': 'May',
+	'06': 'June',
+	'07': 'July',
+	'08': 'August',
+	'09': 'September',
+	'10': 'October',
+	'11': 'November',
+	'12': 'December',
+};
+
 var Slideshow = function(el, options){
 	this.index = 0;
 	this.$el = typeof el == 'string' ? $(el) : el;
@@ -162,6 +177,40 @@ Site.event = {
 		$('.gallery .slides').each(function(){
 			new Slideshow($(this), options);
 		});
+	}
+};
+
+Site.events = {
+	init: function(){
+		this.$list = $('section.events');
+
+		if(this.$list.data('month')) return this.paged(this.$list.data('month') + "");
+		if(this.$list.data('date'))  return this.byDate(this.$list.data('date') + "") 
+	},
+	paged: function(str){
+		this.year  = str.slice(0,4);
+		this.month = str.slice(4);
+		this.pagination();
+		this.monthCalendar();
+	},
+	pagination: function(){
+		var $navEl = $('.pagination'),
+			html = "";
+		
+		if($navEl.data('prev-page')) html += '<div class="prev"><a href="/events?month=' + $navEl.data('prev-page') + '">&lt;</a></div>';
+		html += '<div class="date">' + Months[this.month] + ', ' + this.year + '</div>';
+		if($navEl.data('next-page')) html += '<div class="next"><a href="/events?month=' + $navEl.data('next-page') + '">&gt;</a></div>';
+
+		$navEl.html(html);
+	},
+	monthCalendar: function(){
+		var date = new Date(+this.year, +this.month - 1, 0, 0, 0, 0, 0);
+		this.$calendar = $('.calendar');
+		this.$calendar.datepicker({minDate: date, setDate: new Date()});
+		this.$calendar.datepicker("show");
+	},
+	byDate: function(date){
+
 	}
 };
 

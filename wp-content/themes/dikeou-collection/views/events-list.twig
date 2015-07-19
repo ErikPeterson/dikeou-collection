@@ -1,8 +1,13 @@
+{% if posts|length == 0 %}
+	<h1>No events found for this month</h1>
+{% endif %}
 {% for post in posts %}
-	<article class="event">
-		<h2>{{post.event_time}}</h2>
+	<article class="event" data-date="{{post.event_date}}">
+		<h2><a href="{{post.post_name}}">{{post.event_time}}</a></h2>
 		<div class="event-content">
-		<img src="{{post.thumbnail.get_src('event')}}">
+		<a href="{{post.post_name}}">
+			<img src="{{post.thumbnail.get_src('event')}}">
+		</a>
 			<div class="event-text">
 				<h1>{{post.title}}</h1>
 

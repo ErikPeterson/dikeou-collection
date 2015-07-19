@@ -1,15 +1,15 @@
 {% extends "base.twig" %}
 
 {% block content %}
+<section class="calendar-container">
+	<div class="calendar">
+	</div>
+</section>
 <section class="events" data-month="{{ posts[0].event_date|slice(0, 6) }}">
+	<h1>Events</h1>
+	<div class="pagination" data-next-page="{{ pagination.next_page }}" data-prev-page="{{ pagination.prev_page }}">
+	</div>
 	{% include "events-list.twig" %}
 </section>
-<div class="pagination">
-	{% if pagination.next_page %}
-		{{ dump(pagination.next_page) }}
-	{% endif %}
-	{% if pagination.prev_page %}
-		{{ dump(pagination.prev_page) }}
-	{% endif %}
-</div>
+
 {% endblock %}
