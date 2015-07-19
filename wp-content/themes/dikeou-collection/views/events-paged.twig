@@ -5,7 +5,7 @@
 	<div class="calendar">
 	</div>
 </section>
-<section class="events" data-month="{{ posts[0].event_date|slice(0, 6) }}">
+<section class="events" data-month="{{ pagination.this_page }}">
 	<h1>Events</h1>
 	<div class="pagination" data-next-page="{{ pagination.next_page }}" data-prev-page="{{ pagination.prev_page }}">
 	</div>

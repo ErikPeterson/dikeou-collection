@@ -202,12 +202,35 @@ Site.events = {
 		if($navEl.data('next-page')) html += '<div class="next"><a href="/events?month=' + $navEl.data('next-page') + '">&gt;</a></div>';
 
 		$navEl.html(html);
+
+		if($('.event').length > 0) $('.event:last-child').after($navEl.clone());
 	},
 	monthCalendar: function(){
-		var date = new Date(+this.year, +this.month - 1, 0, 0, 0, 0, 0);
+		var date = new Date(+this.year, +this.month - 1, 0, 0, 0, 0, 0),
+			dates = $.unique($('[data-date]').map(function(i, el){ return "" + $(el).data('date'); })).toArray();
 		this.$calendar = $('.calendar');
-		this.$calendar.datepicker({minDate: date, setDate: new Date()});
+		this.$calendar.datepicker({
+			minDate: date, setDate: new Date(),
+			dateFormat: "yymmdd",
+			onSelect: function(dateText){
+				return window.location.search="?date=" + dateText;
+			},
+			beforeShowDay: function(date){
+				var year = date.getFullYear() + "",
+					month = date.getMonth() + 1,
+					day = date.getDate();
+
+				var formatted = year + ( month < 10 ? "0" + month : month ) + ( day < 10 ? "0" + day : day);
+				if(dates.indexOf(formatted) > -1) {
+
+					return [true, "has-events", ''];
+				}
+				return [true, '', ''];
+			}
+
+		});
 		this.$calendar.datepicker("show");
+		this.$calendar.find('.ui-state-highlight').removeClass('ui-state-highlight');
 	},
 	byDate: function(date){
 

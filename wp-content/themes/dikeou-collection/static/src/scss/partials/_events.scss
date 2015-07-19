@@ -13,7 +13,18 @@ body[data-template="events"]{
 	height: auto;
 	position: relative;
 	display: block;
+	.calendar td.has-events > a{
+		background: $theme-green;
+	}
 
+	.calendar .ui-widget-header{
+		background: $theme-blue;
+		border-color: $theme-blue;
+	}
+
+	.calendar td > a {
+
+	}
 	@media screen and(min-width: $desktop){
 		float: right;
 		width: 25%;
@@ -37,6 +48,9 @@ section.events{
 				padding: 0 1rem;
 				font-weight: bold;
 			}
+		}
+		&:last-child{
+			margin-top: 2rem;
 		}
 	}
 	@media screen and(min-width: $desktop){

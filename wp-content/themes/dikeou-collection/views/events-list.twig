@@ -1,5 +1,5 @@
 {% if posts|length == 0 %}
-	<h1>No events found for this month</h1>
+	<h3>No events found for this date range</h3>
 {% endif %}
 {% for post in posts %}
 	<article class="event" data-date="{{post.event_date}}">

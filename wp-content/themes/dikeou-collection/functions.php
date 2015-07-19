@@ -149,8 +149,9 @@ function draw_routes(){
 			$now = date('Ym');
 			$page = array_key_exists('month', $params) ? $params['month'] : $now;
 			$events_data = get_events_by_ordinal_month($page);
-			if(!$events_data) return Timber::load_template('single.php', false, 404);
+
 			$query = $events_data[0];
+			$params['this_page'] = $page;
 			$params['next_page'] = $events_data[1];
 			$params['prev_page'] = $events_data[2];
 			Timber::load_template('events-paged.php', $query, 200, $params);
@@ -191,8 +192,9 @@ function draw_routes(){
 
 function get_events_by_ordinal_month($page){
 	global $wpdb;
-	
-	$current = new DateTime(preg_replace("/(\d{4})({\d{2})/", '\1-\2-01', $page));
+	error_log($page);
+	error_log(preg_replace("/(\d{4})(\d{2})/", '\1-\2-01', $page));
+	$current = new DateTime(preg_replace("/(\d{4})(\d{2})/", '\1-\2-01', $page));
 	$this_month = $current->format('Ym');
 
 	$last_month = clone $current;
@@ -202,7 +204,9 @@ function get_events_by_ordinal_month($page){
 	$next_month = clone $current;
 	$next_month -> add(new DateInterval('P1M'));
 	$next_month = $next_month->format('Ym');
-
+	error_log($this_month);
+	error_log($last_month);
+	error_log($next_month);
 	$query = array(
 		'post_type' => 'event',
 		'numberposts' => -1,
