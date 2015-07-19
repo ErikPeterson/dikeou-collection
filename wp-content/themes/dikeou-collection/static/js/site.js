@@ -206,12 +206,19 @@ Site.events = {
 		if($('.event').length > 0) $('.event:last-child').after($navEl.clone());
 	},
 	monthCalendar: function(){
-		var date = new Date(+this.year, +this.month - 1, 0, 0, 0, 0, 0),
+		var date = new Date(+this.year, +this.month - 1, 1, 0, 0, 0, 0),
 			dates = $.unique($('[data-date]').map(function(i, el){ return "" + $(el).data('date'); })).toArray();
+
+		console.log(date);
+
 		this.$calendar = $('.calendar');
 		this.$calendar.datepicker({
-			minDate: date, setDate: new Date(),
+			dayNamesMin: 'S M T W T F S'.split(' '),
+			minDate: date, 
+			setDate: date,
 			dateFormat: "yymmdd",
+			nextText: ">",
+			prevText: "<",
 			onSelect: function(dateText){
 				return window.location.search="?date=" + dateText;
 			},
@@ -226,11 +233,13 @@ Site.events = {
 					return [true, "has-events", ''];
 				}
 				return [true, '', ''];
+			},
+			onChangeMonthYear: function(y, m){
+				return window.location.search = "?month=" + y + (m < 10 ? "0" + m : m);
 			}
 
 		});
 		this.$calendar.datepicker("show");
-		this.$calendar.find('.ui-state-highlight').removeClass('ui-state-highlight');
 	},
 	byDate: function(date){
 

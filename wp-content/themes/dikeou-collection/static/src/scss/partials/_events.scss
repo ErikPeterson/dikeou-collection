@@ -10,20 +10,70 @@ body[data-template="events"]{
 
 .calendar-container{
 	width: 100%;
+	max-width: 240px;
 	height: auto;
 	position: relative;
 	display: block;
-	.calendar td.has-events > a{
-		background: $theme-green;
+	margin: 0 auto;
+
+
+
+	.calendar{
+		 .ui-datepicker{
+			width: 100%;
+			box-sizing: border-box;
+		}
+		.ui-widget-header{
+			border-color: $theme-blue;
+			text-align: center;
+			font-weight: bold;
+			position: relative;
+			margin-bottom: 1em;
+
+			.ui-datepicker-prev{
+				float: left;
+				margin-left: 1em;
+			}
+			.ui-datepicker-next{
+				float: right;
+				margin-right: .5em;
+
+			}
+		}
+		td:not(.has-events){
+			-webkit-pointer-events: none;
+			-moz-pointer-events: none;
+			-ms-pointer-events: none;
+			pointer-events: none;
+
+			> a {
+				color: #a9a9a9;
+			}
+		}
+		td.has-events > a{
+			border-bottom: 2px solid $theme-blue;
+		}
+		th{
+			text-align: right;
+		}
+		td{
+			text-align: right;
+			padding: .25em 0;
+		}
+		td > a {
+			color: $theme-blue;
+		}
+		table{
+			padding-right: 0.25em;
+			width: 100%;
+			height: auto;
+		}
 	}
 
-	.calendar .ui-widget-header{
-		background: $theme-blue;
-		border-color: $theme-blue;
-	}
 
-	.calendar td > a {
-
+	@media screen and (min-width: $tablet){
+		margin: 0;
+		
 	}
 	@media screen and(min-width: $desktop){
 		float: right;
@@ -31,10 +81,7 @@ body[data-template="events"]{
 		height: auto;
 	}
 
- .ui-datepicker{
-		width: 100%;
-		box-sizing: border-box;
-	}
+
 }
 section.events{
 	> h1 {
