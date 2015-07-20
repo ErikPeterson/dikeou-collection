@@ -188,12 +188,17 @@ function draw_routes(){
 
 		Timber::load_template('about_page.php', $query);
 	});
+
+	Timber::add_route('/blog', function(){
+
+		$params = $_GET;
+
+		Timber::load_template('blog.php', false, 200, $params);
+	});
 }
 
 function get_events_by_ordinal_month($page){
 	global $wpdb;
-	error_log($page);
-	error_log(preg_replace("/(\d{4})(\d{2})/", '\1-\2-01', $page));
 	$current = new DateTime(preg_replace("/(\d{4})(\d{2})/", '\1-\2-01', $page));
 	$this_month = $current->format('Ym');
 
@@ -204,9 +209,6 @@ function get_events_by_ordinal_month($page){
 	$next_month = clone $current;
 	$next_month -> add(new DateInterval('P1M'));
 	$next_month = $next_month->format('Ym');
-	error_log($this_month);
-	error_log($last_month);
-	error_log($next_month);
 	$query = array(
 		'post_type' => 'event',
 		'numberposts' => -1,

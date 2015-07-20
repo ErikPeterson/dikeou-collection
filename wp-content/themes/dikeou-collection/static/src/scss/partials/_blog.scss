@@ -1,0 +1,16 @@
+article.post{
+	max-width: 640px;
+	width: 100%;
+
+	.image-container > img, .content img{
+		max-width: 100%;
+	}
+
+	.content img{
+		margin: 1rem 0;
+	}
+	
+	padding-bottom: 1rem;
+	border-bottom: 1px solid $theme-blue;
+	margin-bottom: 2rem;
+}

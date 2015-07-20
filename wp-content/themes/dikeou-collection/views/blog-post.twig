@@ -1,0 +1,15 @@
+<article class="post">
+	<h2><a href="{{post.post_url}}">{{ post.title }}</a></h2>
+		{% if post.image_permalink %}
+		<div class="image-container">
+			<img src="{{ post.image_permalink }}" />
+		</div>
+		{% endif %}
+		<div class="content">
+			{% if post.body %}
+				{{ post.body }}
+			{% elseif post.caption %}
+				{{ post.caption}}
+			{% endif %}
+		</div>
+</article>

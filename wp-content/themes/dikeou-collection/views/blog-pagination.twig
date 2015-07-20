@@ -1,0 +1,8 @@
+<section class="pagination">
+{% if prev_page is defined %}
+	<a href="/blog?p={{prev_page}}">Previous</a>
+{% endif %}
+{% if next_page %}
+	<a href="/blog?p={{next_page}}">Next</a>
+{% endif %}
+</section>
