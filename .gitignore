@@ -4,3 +4,5 @@ wordpress
 *.DS_Store
 wp-content/uploads
 wp-content/themes/dikeou-collection/static/css
+wp-content/vendor
+wp-content/composer.lock
