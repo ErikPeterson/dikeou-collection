@@ -2,13 +2,13 @@
 {% if column < 2 %}
 	{% for post in posts|slice(column * column_size, column_size) %}
 	<li class="nav-item">
-		<a href="/artists/{{ post.post_name }}">{{post.title}}</a>
+		<a href="/artist/{{ post.post_name }}">{{post.title}}</a>
 	</li>
 	{% endfor %}
 {% else %}
 	{% for post in posts|slice(column * column_size) %}
 	<li class="nav-item">
-		<a href="/artists/{{ post.post_name }}">{{post.post_title}}</a>
+		<a href="/artist/{{ post.post_name }}">{{post.post_title}}</a>
 	</li>
 	{% endfor %}
 {% endif %}

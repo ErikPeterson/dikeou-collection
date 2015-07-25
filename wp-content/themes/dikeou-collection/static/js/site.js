@@ -84,10 +84,12 @@ Slideshow.prototype.prev = function(e){
 
 
 var Site = {
-	init: function(page, $){
+	init: function(page){
 		this.mobile = window.innerWidth < 640;
-		if(page in this) this[page].init();
 		if(this.mobile) this.global.mobile.nav();
+		var $body = $('body');
+		if($body.hasClass('single-artist')) return this.artist.init();
+		if($body.hasClass('single-event')) return this.event.init();
 	},
 	global: {
 		mobile:	{
@@ -250,5 +252,5 @@ Site.events = {
 
 
 (function($){
-	Site.init($('body').data('template'));
+	Site.init();
 }(jQuery))

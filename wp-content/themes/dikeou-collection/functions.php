@@ -20,9 +20,8 @@ function create_artist_post_type(){
 		'label' => 'Artists',
 		'show_in_menu' => true,
 		'description' => 'Artist pages',
-		'supports' => array('title', 'editor', 'custom-fields')
- 		)
-	);
+		'supports' => array('title', 'custom-fields')
+	));
 
 	include_once(plugin_dir_path(__FILE__).'fields/artist_fields.php');
 }
@@ -39,7 +38,8 @@ function create_events_post_type(){
 		'label' => 'Events',
 		'show_in_menu' => true,
 		'description' => 'Event pages',
-		'supports' => array('title', 'editor', 'custom-fields', 'thumbnail')
+		'supports' => array('title', 'editor', 'custom-fields', 'thumbnail'),
+
  		)
 	);
 
@@ -56,6 +56,26 @@ function add_actions(){
 	add_action('init', 'create_post_types');
 	add_action('after_setup_theme', 'image_sizes');
 	add_filter( 'show_admin_bar', '__return_false' );
+	add_action('admin_menu', 'remove_menus');
+}
+
+function remove_menus () {
+	remove_menu_page('edit.php');
+	remove_menu_page('edit-comments.php');
+	remove_menu_page('themes.php');
+	remove_menu_page('plugins.php');
+	remove_menu_page('tools.php');
+	remove_submenu_page('options-general.php', 'options-writing.php');
+	remove_submenu_page('options-general.php', 'options-reading.php');
+	remove_submenu_page('options-general.php', 'options-discussion.php');
+	remove_submenu_page('options-general.php', 'options-media.php');
+	remove_submenu_page('options-general.php', 'options-permalink.php');
+}
+
+function add_choices($choices){
+	$choices['Page']['page_name'] = 'Page Name';
+
+	return $choices;
 }
 
 function twig_functions($twig){
@@ -68,11 +88,6 @@ function format_date_link($string){
 	return $output;
 }
 
-function add_choices($choices){
-	$choices['Page']['page_name'] = 'Page Name';
-
-	return $choices;
-}
 
 function add_page_name_rule($choices){
 	$posts = Timber::get_posts(array(
@@ -100,6 +115,7 @@ function add_page_name_match($match, $rule, $options){
 	return $match;
 }
 
+
 function image_sizes(){
 	add_image_size('slide_full', 0, 800, false);
 	add_image_size('header', 1400, 0, false);
@@ -118,17 +134,6 @@ function draw_routes(){
 			);
 
 		Timber::load_template('artists.php', $query);
-	});
-
-	Timber::add_route('/artists/:artist_slug', function($params){
-		$query = array(
-			'name' => $params['artist_slug'],
-			'post_type' => 'artist',
-			'posts_per_page' => 1,
-			'caller_get_posts' => 1
-		);
-
-		Timber::load_template('artist.php', $query);
 	});
 
 	Timber::add_route('/events', function(){
@@ -158,36 +163,6 @@ function draw_routes(){
 		}
 	});
 
-	Timber::add_route('/events/:event_slug', function($params){
-		$query = array(
-			'name' => $params['event_slug'],
-			'post_type' => 'event',
-			'posts_per_page' => 1,
-			'caller_get_posts' => 1
-		);
-		
-		Timber::load_template('event.php', $query);
-	});
-
-	Timber::add_route('/contact', function(){
-		$query = array(
-			'post_type' => 'page',
-			'page_name' => 'contact',
-			'posts_per_page' => 1
-		);
-
-		Timber::load_template('contact_page.php', $query);
-	});
-
-	Timber::add_route('/about', function(){
-		$query = array(
-			'post_type' => 'page',
-			'page_name' => 'about',
-			'posts_per_page' => 1
-		);
-
-		Timber::load_template('about_page.php', $query);
-	});
 
 	Timber::add_route('/blog', function(){
 

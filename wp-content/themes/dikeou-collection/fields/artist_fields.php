@@ -84,7 +84,7 @@ if(function_exists("register_field_group"))
 				'sub_fields' => array (
 					array (
 						'key' => 'field_559863f2fac27',
-						'label' => 'Slides',
+						'label' => 'Gallery Slides:',
 						'name' => 'slides',
 						'type' => 'repeater',
 						'column_width' => '',
