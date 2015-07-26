@@ -21,7 +21,7 @@ function create_artist_post_type(){
 		'label' => 'Artists',
 		'show_in_menu' => true,
 		'description' => 'Artist pages',
-		'supports' => array('title', 'custom-fields')
+		'supports' => array('title')
 	));
 
 	include_once(plugin_dir_path(__FILE__).'fields/artist_fields.php');
@@ -35,7 +35,7 @@ function create_artco_post_type(){
 		'label' => 'ART-CO',
 		'show_in_menu' => true,
 		'description' => 'ART-CO Submitted Pages',
-		'supports' => array('title', 'custom-fields', 'editor')
+		'supports' => array('title','editor')
 	));
 
 	include_once(plugin_dir_path(__FILE__).'fields/artco_fields.php');
@@ -53,7 +53,7 @@ function create_events_post_type(){
 		'label' => 'Events',
 		'show_in_menu' => true,
 		'description' => 'Event pages',
-		'supports' => array('title', 'editor', 'custom-fields', 'thumbnail'),
+		'supports' => array('title', 'editor', 'thumbnail'),
 
  		)
 	);
