@@ -1,0 +1,66 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+	<article class="submission">
+		<h1>ART-CO Submission</h1>
+
+		<form action="/artco-submit" method="post" enctype="multipart/form-data">
+			{{function('wp_nonce_field')}}
+
+			<label for="post_title">
+				Title
+				<input type="text" name="post_title" />
+			</label>
+			<p>Choose up to 10 Images for a carousel</p>
+			<label for="post_image_1">
+				Image 1
+				<input type="file" name="post_image_1" />
+			</label>
+			<label for="post_image_2">
+				Image 2
+				<input type="file" name="post_image_2" />
+			</label>
+			<label for="post_image_3">
+				Image 3
+				<input type="file" name="post_image_3" />
+			</label>
+			<label for="post_image_4">
+				Image 4
+				<input type="file" name="post_image_4" />
+			</label>
+			<label for="post_image_5">
+				Image 5
+				<input type="file" name="post_image_5" />
+			</label>
+			<label for="post_image_6">
+				Image 6
+				<input type="file" name="post_image_6" />
+			</label>
+			<label for="post_image_7">
+				Image 7
+				<input type="file" name="post_image_7" />
+			</label>
+			<label for="post_image_8">
+				Image 8
+				<input type="file" name="post_image_8" />
+			</label>
+			<label for="post_image_9">
+				Image 9
+				<input type="file" name="post_image_9" />
+			</label>
+			<label for="post_image_10">
+				Image 10
+				<input type="file" name="post_image_10" />
+			</label>
+			<label for="post_artist_information">
+			Artist Information
+			<textarea name="post_artist_information" rows="15" cols="80"></textarea>
+			</label>
+			<label for="post_content">
+			Post Content
+			<textarea name="post_content" rows="15" cols="80"></textarea>
+			</label>
+			<input type="submit" value="Submit" />
+		</form>
+	</article>
+{% endblock %}

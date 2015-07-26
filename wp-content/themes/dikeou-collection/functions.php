@@ -10,6 +10,7 @@ function create_post_types(){
 	create_artist_post_type();
 	create_contact_page();
 	create_events_post_type();
+	create_artco_post_type();
 }
 
 function create_artist_post_type(){
@@ -24,6 +25,20 @@ function create_artist_post_type(){
 	));
 
 	include_once(plugin_dir_path(__FILE__).'fields/artist_fields.php');
+}
+
+function create_artco_post_type(){
+	register_post_type('art-co',
+		array(
+		'public' => true,
+		'has_archive' => true,
+		'label' => 'ART-CO',
+		'show_in_menu' => true,
+		'description' => 'ART-CO Submitted Pages',
+		'supports' => array('title', 'custom-fields', 'editor')
+	));
+
+	include_once(plugin_dir_path(__FILE__).'fields/artco_fields.php');
 }
 
 function create_contact_page(){
@@ -170,6 +185,98 @@ function draw_routes(){
 
 		Timber::load_template('blog.php', false, 200, $params);
 	});
+
+	Timber::add_route('/artco-submission', function(){
+		Timber::load_template('artcosubmission.php');
+	});
+
+	Timber::add_route('/artco-submit', function(){
+		$params = $_REQUEST;
+		$nonce = $params['_wpnonce'];
+		
+		if( ! wp_verify_nonce($nonce)){
+		 error_log($nonce);
+		 exit;
+		}
+		
+		try{
+			$image_ids = images_from_params($_FILES);
+			$artist_content = wpautop(strip_tags($params['post_artist_information']));
+
+			$options = array(
+				'post_title' => strip_tags($params['post_title']),
+				'post_name' => sanitize_title($params['post_title']),
+				'post_excerpt' => "",
+				'post_status' => 'draft',
+				'post_type' => 'art-co',
+				'post_content' => $params['post_content']
+			); 
+			
+			$post_id = wp_insert_post($options);
+					
+			if($post_id == 0){
+				return Timber::load_template('artcofailed.php');
+			}
+			$params = array();
+			$params['post_id'] = $post_id;
+			$params['image_ids'] = $image_ids;
+			$params['artist_content'] = $artist_content;
+
+			Timber::load_template('artcosubmitted.php', false, 200, $params);
+		} catch(Exception $e){
+			Timber::load_template('artcofailed.php');
+		}
+
+	});
+}
+
+function images_from_params($params){
+	$i = 1;
+	$images = array();
+	$upload_dir = wp_upload_dir();
+	$base_path = $upload_dir['path'];
+
+	while(array_key_exists('post_image_' . $i, $params)){
+		$image = $params["post_image_" . $i];
+		
+		if(! image_ok($image) ){
+			$i++;
+			continue;
+		}
+		
+		$base_name = $image['name'];
+		$destination = $base_path . $base_name;
+		
+		if(!move_uploaded_file( $image['tmp_name'], $destination) ){
+			$i++;
+			continue;
+		};
+
+		$filetype = wp_check_filetype($destination, null);
+
+		$attachment = array(
+			'guid' => $upload_dir['url'] . '/' . $base_name,
+			'post_mime_type' => $filetype['type'],
+			'post_title' => preg_replace( '/\.[^.]+$/', '', $base_name),
+			'post_content' => '',
+			'post_status' => 'inherit'
+		);
+
+		$id = wp_insert_attachment($attachment, $destination);
+		array_push( $images, $id );
+
+		$i++;
+	}
+
+	return $images;	
+}
+
+function image_ok($image){
+	$has_name = array_key_exists('name', $image);
+	$has_tmp_name = array_key_exists('tmp_name', $image);
+	$is_small_enough = $image['size'] <= 1000000;
+
+	return $has_name && $has_tmp_name && $is_small_enough;
 }
 
 function get_events_by_ordinal_month($page){
