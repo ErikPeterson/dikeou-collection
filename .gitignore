@@ -2,6 +2,7 @@ wordpress
 *.sass-cache
 *.log
 *.DS_Store
+wp-content/debug.log
 wp-content/uploads
 wp-content/themes/dikeou-collection/static/css
 wp-content/vendor
