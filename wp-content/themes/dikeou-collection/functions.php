@@ -28,7 +28,7 @@ function create_artist_post_type(){
 }
 
 function create_artco_post_type(){
-	register_post_type('art-co',
+	register_post_type('artco',
 		array(
 		'public' => true,
 		'has_archive' => true,
@@ -178,6 +178,19 @@ function draw_routes(){
 		}
 	});
 
+	Timber::add_route('/artco-posts', function(){
+		$query = array(
+			'post_type' => 'artco',
+			'no_paging' => true,
+			'caller_get_posts' => 1,
+			'posts_per_page' => -1,
+			'order' => 'DESC',
+			'orderby' => 'date'
+			);
+
+		Timber::load_template('artco-posts.php', $query);
+	});
+
 
 	Timber::add_route('/blog', function(){
 
@@ -208,7 +221,7 @@ function draw_routes(){
 				'post_name' => sanitize_title($params['post_title']),
 				'post_excerpt' => "",
 				'post_status' => 'draft',
-				'post_type' => 'art-co',
+				'post_type' => 'artco',
 				'post_content' => $params['post_content']
 			); 
 			

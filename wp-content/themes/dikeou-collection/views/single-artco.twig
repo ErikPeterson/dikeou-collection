@@ -1,0 +1,17 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="art-co-header">
+		<h1>{{post.post_title}}</h1>
+	</div>
+	<section class="artist-content">
+		<h3>About the Artist</h3>
+		{{ post.get_field('artist_content') }}
+	</section>
+	<div class="art-co-body">
+	{% if post.get_field('slides') %}
+		{% include 'gallery.twig' with {'class': 'gallery', 'gallery': { 'slides': post.get_field('slides') } } %}
+	{% endif %}
+	{{ post.content }}
+	</div>
+{% endblock %}

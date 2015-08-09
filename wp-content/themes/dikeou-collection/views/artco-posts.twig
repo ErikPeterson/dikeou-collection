@@ -1,0 +1,13 @@
+{% extends "base.twig" %}
+{% block content %}
+	<section class="artco-list">
+	<h1>ART-CO</h1>
+		{% for post in posts %}
+			<article>
+				<h2><a href="/artco/{{post.post_name}}">{{ post.post_title }}</a></h2>
+				<p>{{post.get_preview(25)}}</p>
+			</article>
+		{% endfor %}
+	</section>
+	
+{% endblock %}
