@@ -3,11 +3,11 @@
    {% if post.get_field('artist_statement') and post.get_field('artist_statement') is not empty %}
    <li data-modal="artist-statement">Artist Statement</li>
    {% endif %}
-   {% if post.get_field('zing_links') %}
-   <li data-modal="zing-links">Issues of zingMagazine</li>
-   {% endif %}
    {% if post.curator_statement and post.curator_statement is not empty %}
    <li data-modal="curator-statement">Curator Statement</li>
+   {% endif %}
+   {% if post.get_field('zing_links') %}
+   <li data-modal="zing-links">Issues of zingMagazine</li>
    {% endif %}
    {% if post.get_field('artist_site_url') and post.get_field('artist_site_url') is not empty %}
    <li><a href="{{ post.get_field('artist_site_url') }}" target="_blank">Artist Site</a></li>

@@ -35,8 +35,10 @@ Slideshow.prototype.init = function(options){
 		if(!options.hasOwnProperty(prop)) continue;
 		this.options[prop] = options[prop];
 	}
+
 	this.start_index = this.options.start_index || 0;
 	this.__setSlides();
+
 };
 
 Slideshow.prototype.__setSlides = function(){
@@ -54,6 +56,23 @@ Slideshow.prototype.__bindSlide = function(slide){
 
 		$next.click(this.next.bind(this));
 		$prev.click(this.prev.bind(this));
+
+		if(this.options.controls.modal) return this.__bindSlideModal(slide);
+		if(this.options.events['slide:ready']) this.options.events['slide:ready']($slide);
+};
+
+Slideshow.prototype.__bindSlideModal = function(slide){
+	var $slide = $(slide),
+		$handle = $(slide).find(this.options.controls.modal.handle),
+		$modal = $(slide).find(this.options.controls.modal.modal);
+		$modal.remove().appendTo($('body'));
+		$modal.css({backgroundImage: 'url(' + $modal.data('src') + ')'})
+		$handle.click(function(){
+			$modal.addClass('open');
+			$modal.one('click', function(){
+				$modal.removeClass('open');
+			});
+		});
 
 		if(this.options.events['slide:ready']) this.options.events['slide:ready']($slide);
 };
@@ -80,7 +99,7 @@ Slideshow.prototype.prev = function(e){
 	e.preventDefault();
 	var prevIndex = this.index > 0 ? this.index - 1 : this._length - 1;
 	this.goto(prevIndex);
-}
+};
 
 
 var Site = {
@@ -90,6 +109,7 @@ var Site = {
 		var $body = $('body');
 		if($body.hasClass('single-artist')) return this.artist.init();
 		if($body.hasClass('single-event')) return this.event.init();
+		if($body.hasClass('post-type-archive-event')) return this.events.init();
 	},
 	global: {
 		mobile:	{
@@ -142,7 +162,10 @@ Site.artist = {
 					var $handle  = $slide.find('.slide-open'),
 						$content = $slide.find('.slide-content');
 
-						$handle.click(function(){$content.toggleClass('open')}); 
+						$handle.click(function(e){
+							e.preventDefault();
+							$content.toggleClass('open');
+						}); 
 				}
 			}
 		};
@@ -171,7 +194,7 @@ Site.event = {
 					var $handle  = $slide.find('.slide-open'),
 						$content = $slide.find('.slide-content');
 
-						$handle.click(function(){$content.toggleClass('open')}); 
+						$handle.click(function(e){$content.toggleClass('open')}); 
 				}
 			}
 		};
@@ -211,13 +234,10 @@ Site.events = {
 		var date = new Date(+this.year, +this.month - 1, 1, 0, 0, 0, 0),
 			dates = $.unique($('[data-date]').map(function(i, el){ return "" + $(el).data('date'); })).toArray();
 
-		console.log(date);
-
 		this.$calendar = $('.calendar');
 		this.$calendar.datepicker({
 			dayNamesMin: 'S M T W T F S'.split(' '),
-			minDate: date, 
-			setDate: date,
+			minDate: null, 
 			dateFormat: "yymmdd",
 			nextText: ">",
 			prevText: "<",
@@ -235,11 +255,12 @@ Site.events = {
 					return [true, "has-events", ''];
 				}
 				return [true, '', ''];
-			},
-			onChangeMonthYear: function(y, m){
-				return window.location.search = "?month=" + y + (m < 10 ? "0" + m : m);
 			}
 
+		});
+		this.$calendar.datepicker('setDate', date);
+		this.$calendar.datepicker('option', 'onChangeMonthYear', function(y, m){
+			return window.location.search = "?month=" + y + (m < 10 ? "0" + m : m);
 		});
 		this.$calendar.datepicker("show");
 	},

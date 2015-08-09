@@ -213,7 +213,7 @@ function draw_routes(){
 			); 
 			
 			$post_id = wp_insert_post($options);
-					
+
 			if($post_id == 0){
 				return Timber::load_template('artcofailed.php');
 			}
@@ -235,6 +235,7 @@ function images_from_params($params){
 	$images = array();
 	$upload_dir = wp_upload_dir();
 	$base_path = $upload_dir['path'];
+	error_log($upload_dir['path']);
 
 	while(array_key_exists('post_image_' . $i, $params)){
 		$image = $params["post_image_" . $i];

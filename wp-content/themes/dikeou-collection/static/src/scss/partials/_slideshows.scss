@@ -82,6 +82,28 @@ section.gallery{
 		}
 	}
 
-	.slide-image:hover{
-		cursor: zoom-in;
+	.slide-modal{
+		position: fixed;
+		width: 0;
+		height: 0;
+		top: 0;
+		left: 0;
+		z-index: 1000;
+		overflow: hidden;
+		background-color: white;
+		background-size: contain;
+		background-position: center center;
+		background-repeat: no-repeat; 
+		&.open{
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.slide-content{
+		max-height: 0;
+		transition: max-height .25s;
+		&.open{
+			max-height: 300px;
+		}
 	}
