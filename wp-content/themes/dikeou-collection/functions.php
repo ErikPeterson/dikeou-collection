@@ -308,7 +308,7 @@ function get_events_by_ordinal_month($page){
 	$query = array(
 		'post_type' => 'event',
 		'numberposts' => -1,
-		'order' => 'DESC',
+		'order' => 'ASC',
 		'orderby' => 'meta_value',
 		'meta_query' => array(
 			array(

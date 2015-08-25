@@ -51,7 +51,7 @@ section.gallery{
 		height: 80vw;
 		position: relative;
 		background-size: contain;
-		background-position: 50% 50%;
+		background-position: 0% 50%;
 		background-repeat: no-repeat;
 		background-color: rgba(0,0,0,0);
 		
@@ -103,6 +103,7 @@ section.gallery{
 	.slide-content{
 		max-height: 0;
 		transition: max-height .25s;
+		overflow: hidden;
 		&.open{
 			max-height: 300px;
 		}
