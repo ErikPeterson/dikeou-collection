@@ -43,7 +43,7 @@ if(function_exists("register_field_group"))
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'art-co',
+					'value' => 'artco',
 					'order_no' => 0,
 					'group_no' => 0,
 				),
