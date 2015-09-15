@@ -7,10 +7,10 @@
    <li data-modal="curator-statement">Curator Statement</li>
    {% endif %}
    {% if post.get_field('zing_links') %}
-   <li data-modal="zing-links">Issues of zingmagazine</li>
+   <li data-modal="zing-links">zingmagazine project</li>
    {% endif %}
    {% if post.get_field('artist_site_url') and post.get_field('artist_site_url') is not empty %}
-   <li><a href="{{ post.get_field('artist_site_url') }}" target="_blank">Artist Site</a></li>
+   <li><a href="{{ post.get_field('artist_site_url') }}" target="_blank">Website</a></li>
    {% endif %}
  </ul>
 </div>

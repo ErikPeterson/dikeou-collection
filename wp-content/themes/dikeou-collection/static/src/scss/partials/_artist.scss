@@ -9,6 +9,9 @@
   		height: auto;
   		position: relative;
 
+      h3{
+      }
+
   		> ul{
   			list-style: none;
   			display: block;
@@ -16,15 +19,19 @@
   			text-align: left;
 
   			> li{
+          cursor: pointer;
   				display: inline-block;
   				color: $theme-blue;
-  				padding: 0 0 0.25rem 0;
+  				padding: 0.5rem 0 0.25rem 0;
   				&:not(:last-of-type):after{
   					display: inline-block;
   					content: '|';
   					padding: 0 0.5rem;
   					color: $theme-blue;
   				}
+          @media screen and (min-width: $tablet){
+            padding-top: 0;
+          }
   			}
   		}
   	}
@@ -47,7 +54,10 @@
   		overflow-y: hidden;
 
   		> .modal-inner{
-  			padding: 3rem 1rem;
+  			padding: 1rem 1rem;
+          @media screen and (min-width: $tablet){
+            padding-top: 3rem;
+          }
   		}
   	}
 

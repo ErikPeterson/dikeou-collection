@@ -11,6 +11,10 @@ body{
 	overflow-x: hidden;
 	min-height: 100vh;
 	font-family: Arial, sans-serif;
+
+	img{
+		max-width: 100%;
+	}
 }
 
 #content{

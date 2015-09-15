@@ -162,11 +162,11 @@ Site.artist = {
 			events: {
 				'slide:ready': function($slide){
 					var $handle  = $slide.find('.slide-open'),
-						$content = $slide.find('.slide-content');
+						$slides  = $slide.closest('.gallery');
 
 						$handle.click(function(e){
 							e.preventDefault();
-							$content.toggleClass('open');
+							$slides.toggleClass('open');
 						}); 
 				}
 			}
@@ -215,9 +215,12 @@ Site.event = {
 			events: {
 				'slide:ready': function($slide){
 					var $handle  = $slide.find('.slide-open'),
-						$content = $slide.find('.slide-content');
+						$slides  = $slide.closest('.gallery');
 
-						$handle.click(function(e){$content.toggleClass('open')}); 
+						$handle.click(function(e){
+							e.preventDefault();
+							$slides.toggleClass('open');
+						}); 
 				}
 			}
 		};

@@ -12,8 +12,19 @@
 		</div>
 		<article id="contact">
 			<h2>Contact</h2>
+			<div class="addthis_horizontal_follow_toolbox"></div>
+
 
 			{{ post.get_field('contact_content') }}
+		</article>
+		<article id="location">
+			<h2>Location</h2>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2832.7235418793293!2d-104.99146136594591!3d39.74484158278594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x75363e298555f127!2sDikeou+Collection!5e0!3m2!1sen!2sus!4v1436740463696" width="320" height="280" frameborder="0" style="border:0" allowfullscreen></iframe>
+			<br />
+			<br />
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3311.076270884327!2d-104.98317305018729!3d39.73956673900222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c792adde4a641%3A0x7b6b4818fcb8a3e2!2sDikeou+Pop-Up!5e0!3m2!1sen!2sus!4v1442318309594" width="320" height="280" frameborder="0" style="border:0" allowfullscreen></iframe>
+			<br />
+			{{ post.get_field('location_content') }}
 		</article>
 		<article id="newsletter">
 			<!--Begin CTCT Sign-Up Form-->
@@ -46,12 +57,6 @@
 			</script>
 			<script type='text/javascript' src='https://static.ctctcdn.com/h/contacts-embedded-signup-assets/1.0.2/js/signup-form.js'></script>
 			<!--End CTCT Sign-Up Form-->
-		</article>
-		<article id="location">
-			<h2>Location</h2>
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2832.7235418793293!2d-104.99146136594591!3d39.74484158278594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x75363e298555f127!2sDikeou+Collection!5e0!3m2!1sen!2sus!4v1436740463696" width="320" height="280" frameborder="0" style="border:0" allowfullscreen></iframe>
-			<br />
-			{{ post.get_field('location_content') }}
 		</article>
 		<article id="internship">
 			<h2>Internship Program</h2>

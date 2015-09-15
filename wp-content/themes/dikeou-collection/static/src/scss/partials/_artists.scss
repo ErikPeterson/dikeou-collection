@@ -38,9 +38,18 @@
 	display: block;
 	width: 100%;
 	height: auto;
-	text-align: center;
+	text-align: left;
+
+	@media screen and (min-width: $tablet){
+		text-align: center;
+	}
+
 	> a {
+		padding: 0.75rem 0.5rem;
+
+	@media screen and (min-width: $tablet){
 		padding: 1rem 0.5rem;
+	}
 		display: inline-block;
 		text-transform: lowercase;
 	}
