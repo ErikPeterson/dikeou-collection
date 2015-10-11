@@ -39,6 +39,15 @@ if(function_exists("register_field_group"))
 				'media_upload' => 'no',
 			),
 			array (
+				'key' => 'field_55a3234dff5bc',
+				'label' => 'Alt Location Content',
+				'name' => 'location_content_alt',
+				'type' => 'wysiwyg',
+				'instructions' => 'Use H3 for sub-headings.',
+				'default_value' => '<h3>Dikeou Pop-Up: Colfax</h3><p>312 East Colfax Avenue<br>Denver, CO 80203</p><p>By appointment</p><p>Parking available on Grants St behind the Newhouse Hotel at the commercial parking lots</p>',
+				'media_upload' => 'no',
+			),
+			array (
 				'key' => 'field_55a3237fff5bd',
 				'label' => 'Internship Content',
 				'name' => 'internship_content',
