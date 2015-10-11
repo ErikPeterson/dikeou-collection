@@ -11,7 +11,6 @@ $response = $client->getBlogPosts('dikeoucollection.tumblr.com', array('limit' =
 $context['posts'] = $response->posts;
 $context['next_page'] = ($page * 5) + 5 >= $response->blog->posts ? false : $page + 1;
 $context['prev_page'] = $page > 0 ? $page - 1 : false;
-error_log($context['prev_page']);
 $context['page_type'] = 'blog';
 
 Timber::render('blog-page.twig', $context);

@@ -1,3 +1,13 @@
+[data-template="artists"] #content .wrapper{
+	@media screen and (min-width: $tablet){
+		box-sizing: border-box;
+		padding-left: 4rem;
+	}
+	@media screen and (min-width: $desktop){
+		padding-left: 8rem;
+	}
+}
+
 .column{
 	display: block;
 	width: 100%;

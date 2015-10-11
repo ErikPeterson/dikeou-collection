@@ -1,3 +1,13 @@
+[data-template="artist"] #content .wrapper{
+  @media screen and (min-width: $tablet){
+    box-sizing: border-box;
+    padding-left: 4rem;
+  }
+  @media screen and (min-width: $desktop){
+    padding-left: 8rem;
+  }
+}
+
 .artist-header{
 	h1{
 		text-transform: lowercase;

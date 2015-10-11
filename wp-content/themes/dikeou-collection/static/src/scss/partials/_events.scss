@@ -1,10 +1,10 @@
-body[data-template="events"]{
-	.wrapper{
-		@media screen and (min-width: $desktop){
-			padding-left: 5%;
-			overflow: hidden;
-			box-sizing: border-box;
-		}
+[data-template="events"] #content .wrapper{
+	@media screen and (min-width: $tablet){
+		box-sizing: border-box;
+		padding-left: 4rem;
+	}
+	@media screen and (min-width: $desktop){
+		padding-left: 8rem;
 	}
 }
 
