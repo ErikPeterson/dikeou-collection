@@ -28,7 +28,7 @@
       <div class="modal-inner">
    		<ul>
    			{% for item in post.get_field('zing_links') %}
-   			<li><a href="{{item.url}}">{{item.text}}</a></li>
+   			<li><a href="{{item.url}}" target="_blank">{{item.text}}</a></li>
    			{% endfor %}
    		</ul>
       </div>
