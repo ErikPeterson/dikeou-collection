@@ -26,7 +26,7 @@ body > .left{
 	width: auto;
 	max-width: 50%;
 	position: relative;
-	z-index: 4;
+	z-index: 9999;
 
 	img{
 		position: relative;
@@ -114,7 +114,6 @@ nav{
 
 .nav-links{
 	margin: 0;
-	padding: 0;
 	box-sizing: border-box;
 	display: block;
 	width: 100%;
@@ -122,7 +121,7 @@ nav{
 	position: relative;
 	list-style: none;
 	background-color: white;
-	padding-top: 1rem;
+	padding: 1rem 0.5rem 0;
 
 	> a > li{
 		display: block;
@@ -139,7 +138,7 @@ nav{
 
 	@media screen and (min-width: $tablet){
 		text-align: left;
-		padding-top: 0;
+		padding: 0;
 		margin-top: 1rem;
 		border-top: 1px solid $theme-blue;
 		> li{
