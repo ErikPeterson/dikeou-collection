@@ -10,8 +10,8 @@
 	<section class="event-description">
 		{% if post.video_url is not empty %}
 		<h3><a href="{{ post.video_url}}">Event Video</a></h3>
-		{{ post.content }}
 		{% endif %}
+		{{ post.content }}
 	</section>
 	{% for gallery in post.get_field('event_galleries') %}
 		{% include 'gallery.twig' with {'class': 'gallery', 'gallery': gallery} %}
