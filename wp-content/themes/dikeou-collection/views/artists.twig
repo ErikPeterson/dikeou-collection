@@ -1,7 +1,7 @@
 {% extends "base.twig" %}
 {% block content %}
-	{% for i in 1..column_count %}
-		{{ include('artists_nav_column.twig', { 'column': i - 1 }) }}
+	{% for i in 0..( columns - 1) %}
+		{{ include('artists_nav_column.twig', { 'column': i }) }}
 	{% endfor %}
 	
 {% endblock %}

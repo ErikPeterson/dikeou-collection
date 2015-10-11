@@ -14,6 +14,7 @@
 		width: 50%;
 		float: left;
 		padding-right: 0.5rem;
+		margin-top: 1.3rem;
 		li:first-child{
 			border-top: 1px solid $theme-blue;
 		}
@@ -40,15 +41,11 @@
 	height: auto;
 	text-align: left;
 
-	@media screen and (min-width: $tablet){
-		text-align: center;
-	}
-
 	> a {
 		padding: 0.75rem 0.5rem;
 
 	@media screen and (min-width: $tablet){
-		padding: 1rem 0.5rem;
+		padding: 0.75rem 0 0.75rem 0.5rem;
 	}
 		display: inline-block;
 		text-transform: lowercase;
