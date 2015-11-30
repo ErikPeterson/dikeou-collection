@@ -1,5 +1,5 @@
 <ul class="artists-nav column">
-	{% for post in posts|slice(column * 10, column_size) %}
+	{% for post in posts|slice(column * 10, 10) %}
 	<li class="nav-item">
 		<a href="/artist/{{ post.post_name }}">{{post.title}}</a>
 	</li>

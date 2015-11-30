@@ -6,6 +6,6 @@ $context['posts'] = $posts;
 $context['page_type'] = 'artists';
 
 $count = count($posts);
-$context['columns'] = 1 + floor($count / 3);
+$context['columns'] = max(1, round($count / 10));
 
 Timber::render('artists.twig', $context);
