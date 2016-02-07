@@ -10,7 +10,7 @@
 
 .column{
 	display: block;
-	width: 100%;
+	width: auto;
 	height: auto;
 	margin: 0;
 	padding: 0;
@@ -41,26 +41,29 @@
 	@media screen and (min-width: 900px){
 		margin-right: 1.5rem;
 		&:nth-of-type(3) li:first-child{
-			border-top: 1px solid $theme-blue;
+			border-top: 1px solid black;
 		}
 	}
 
 }
 
 .column li{
-	border-bottom: 1px solid $theme-blue;
 	display: block;
-	width: 100%;
+	width: 147px;
 	height: auto;
 	text-align: left;
+	border-bottom: 1px solid black;
 
 	> a {
 		padding: 0.75rem 0.5rem;
-
+		width: auto;
 		@media screen and (min-width: $tablet){
 			padding: 0.75rem 0 0.75rem 0.5rem;
 		}
 		display: inline-block;
 		text-transform: lowercase;
+		&:hover{
+			color: black;
+		}
 	}
 }
