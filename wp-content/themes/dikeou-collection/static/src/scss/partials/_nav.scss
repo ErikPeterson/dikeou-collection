@@ -110,18 +110,21 @@ nav{
 		width: 100%;
 		height: auto;
 		padding: 0.75rem 0.5rem;
-		border-bottom: 1px solid $theme-blue;
+		border-bottom: 1px solid black;
 	}
 
 	a{
 		text-decoration: none;
+		&:hover{
+			color: black;
+		}
 	}
 
 	@media screen and (min-width: $tablet){
 		text-align: left;
 		padding: 0;
 		margin-top: 1rem;
-		border-top: 1px solid $theme-blue;
+		border-top: 1px solid black;
 		> li{
 			padding: 0.75rem 0 0.75rem 0.5rem;
 		}
