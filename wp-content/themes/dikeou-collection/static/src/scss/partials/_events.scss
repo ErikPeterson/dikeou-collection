@@ -10,13 +10,15 @@
 
 .calendar-container{
 	width: 100%;
-	max-width: 240px;
+	max-width: 180px;
 	height: auto;
 	position: relative;
 	display: block;
-	margin: 0 auto;
-
-
+	margin: 1.75rem auto;
+	@media screen and (min-width: $tablet){
+		max-width: 240px;
+		margin-top: 0;
+	}
 
 	.calendar{
 		 .ui-datepicker{
@@ -32,8 +34,11 @@
 
 			.ui-datepicker-prev{
 				float: left;
-				margin-left: 1em;
+				margin-left: 0.5em;
 				cursor: pointer;
+				@media screen and (min-width: $tablet){
+					margin-left: 1em;
+				}
 			}
 			.ui-datepicker-next{
 				float: right;
