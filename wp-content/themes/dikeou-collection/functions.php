@@ -135,6 +135,7 @@ function image_sizes(){
 	add_image_size('slide_full', 0, 800, false);
 	add_image_size('header', 1400, 0, false);
 	add_image_size('event', 600, 600, array('center', 'center'));
+	add_image_size('proportional-thumbnail', 600, 0, false);
 }
 
 function draw_routes(){

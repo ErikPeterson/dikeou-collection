@@ -8,7 +8,7 @@ information about themselves and their work.</p><p> <a href="/artco-submission">
 			<article>
 				{% if post.get_field('slides') %}
 				{% set img = TimberImage(post.get_field('slides')[0].image) %}
-				<img class="preview" src="{{ img.get_src('event') }}">
+				<img class="preview" src="{{ img.get_src('proportional-thumbnail') }}">
 				{% endif%}
 				<h2><a href="/artco/{{post.post_name}}">{{ post.post_title }}</a></h2>
 				<p>{{post.get_preview(25)}}</p>
