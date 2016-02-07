@@ -116,9 +116,9 @@ var Site = {
 	global: {
 		mobile:	{
 			nav: function(){
-				$(document).on('click', 'nav', function(){
-					$(this).toggleClass('active');
-				});
+				// $(document).on('click', 'nav', function(){
+				// 	$(this).toggleClass('active');
+				// });
 			    if($('body').hasClass('home')) $('nav').addClass('active');
 			}
 		}

@@ -50,6 +50,7 @@
   		position: relative;
   		width: 100%;
   		height: 0;
+      height: auto;
   	}
 
   	.modals > div{
@@ -64,15 +65,19 @@
   		overflow-y: hidden;
 
   		> .modal-inner{
+        h3{
+          margin-top: 0;
+        }
   			padding: 1rem 1rem;
           @media screen and (min-width: $tablet){
-            padding-top: 3rem;
+            padding-top: 1rem;
           }
   		}
   	}
 
   	.modals > div.active{
   		max-height: 100vh;
+      position: relative;
   	}
 }
 

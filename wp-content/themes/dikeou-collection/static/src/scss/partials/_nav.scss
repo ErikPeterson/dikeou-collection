@@ -68,27 +68,27 @@ nav{
 	z-index: 100;
 	top: 0;
 	right: 0;
-	&:before{
-		top: 0.5rem;
-		right: 0.5rem;
-		pointer-events: none;
-		content: '▼';
-		display: block;
-		position: absolute;
-		color: white;
-		text-align: center;
-		line-height: 2.1;
-		font-size: 1rem;
-		height: 2rem;
-		width: 2rem;
-		background-color: $theme-blue;
-		z-index: 2;
-	}
+	// &:before{
+	// 	top: 0.5rem;
+	// 	right: 0.5rem;
+	// 	pointer-events: none;
+	// 	content: '▼';
+	// 	display: block;
+	// 	position: absolute;
+	// 	color: white;
+	// 	text-align: center;
+	// 	line-height: 2.1;
+	// 	font-size: 1rem;
+	// 	height: 2rem;
+	// 	width: 2rem;
+	// 	background-color: $theme-blue;
+	// 	z-index: 2;
+	// }
 	&.active{
 		height: 100vh;
-		&:before{
-			content: 'X';
-		}
+		// &:before{
+		// 	content: 'X';
+		// }
 	}
 
 	@media screen and (min-width: $tablet){

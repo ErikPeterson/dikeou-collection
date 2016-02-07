@@ -80,11 +80,11 @@ section.gallery{
 		}
 
 		@media screen and (min-width: 1200px){
-			height: 700px;
+			height: 560px;
 		}
 
 		@media screen and (min-width: 1300px){
-			height: 800px;
+			height: 640px;
 		}
 	}
 
@@ -101,6 +101,9 @@ section.gallery{
 		background-position: center center;
 		background-repeat: no-repeat; 
 		&.open{
+			background-origin: content-box;
+			box-sizing: border-box;
+			padding: 2.5%;
 			width: 100%;
 			height: 100%;
 		}

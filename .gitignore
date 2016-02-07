@@ -9,3 +9,4 @@ wp-content/vendor
 wp-content/composer.lock
 uploads/
 deploy.sh
+wp-content/dikeou.sql
