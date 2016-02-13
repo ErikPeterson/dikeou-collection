@@ -35,7 +35,7 @@ function create_artco_post_type(){
 		'label' => 'ART-CO',
 		'show_in_menu' => true,
 		'description' => 'ART-CO Submitted Pages',
-		'supports' => array('title','editor')
+		'supports' => array('title')
 	));
 
 	include_once(plugin_dir_path(__FILE__).'fields/artco_fields.php');
