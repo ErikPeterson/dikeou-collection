@@ -188,7 +188,22 @@ Site.artco = {
 			toggle_class: 'active',
 			controls: {
 				prev: '.slide-prev',
-				next: '.slide-next'
+				next: '.slide-next',
+				modal: {
+					handle: '.slide-zoom',
+					modal: '.slide-modal'
+				}
+			},
+			events: {
+				'slide:ready': function($slide){
+					var $handle  = $slide.find('.slide-open'),
+						$slides  = $slide.closest('.gallery');
+
+						$handle.click(function(e){
+							e.preventDefault();
+							$slides.toggleClass('open');
+						}); 
+				}
 			}
 		};
 

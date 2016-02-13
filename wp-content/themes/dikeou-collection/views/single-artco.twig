@@ -12,6 +12,5 @@
 	{% if post.get_field('slides') %}
 		{% include 'gallery.twig' with {'class': 'gallery', 'gallery': { 'slides': post.get_field('slides') } } %}
 	{% endif %}
-	{{ post.content }}
 	</div>
 {% endblock %}
