@@ -2,8 +2,7 @@
 {% block content %}
 	<section class="artco-list">
 	<h1>ART-CO</h1>
-	<p>This space is Dikeou Collection’s platform for Colorado artists to share
-information about themselves and their work.</p><p> <a href="/artco-submission">Click here to participate</a></p>
+	{{page.content}}
 		{% for post in posts %}
 			<article>
 				{% if post.get_field('slides') %}
