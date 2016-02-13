@@ -207,14 +207,14 @@ function draw_routes(){
 	Timber::add_route('/artco-submit', function(){
 		$params = $_REQUEST;
 		$nonce = $params['_wpnonce'];
-		
 		if( ! wp_verify_nonce($nonce)){
+	     error_log('Bad nonce received: ');
 		 error_log($nonce);
 		 exit;
 		}
 		
 		try{
-			$image_ids = images_from_params($_FILES);
+			$images = images_from_params($_FILES, $params);
 			$artist_content = wpautop(strip_tags($params['post_artist_information']));
 
 			$options = array(
@@ -222,8 +222,7 @@ function draw_routes(){
 				'post_name' => sanitize_title($params['post_title']),
 				'post_excerpt' => "",
 				'post_status' => 'draft',
-				'post_type' => 'artco',
-				'post_content' => $params['post_content']
+				'post_type' => 'artco'
 			); 
 			
 			$post_id = wp_insert_post($options);
@@ -233,7 +232,7 @@ function draw_routes(){
 			}
 			$params = array();
 			$params['post_id'] = $post_id;
-			$params['image_ids'] = $image_ids;
+			$params['images'] = $images;
 			$params['artist_content'] = $artist_content;
 
 			Timber::load_template('artcosubmitted.php', false, 200, $params);
@@ -244,16 +243,17 @@ function draw_routes(){
 	});
 }
 
-function images_from_params($params){
+function images_from_params($image_files, $params){	
 	$i = 1;
 	$images = array();
 	$upload_dir = wp_upload_dir();
 	$base_path = $upload_dir['path'];
-	error_log($upload_dir['path']);
 
-	while(array_key_exists('post_image_' . $i, $params)){
-		$image = $params["post_image_" . $i];
-		
+	while(array_key_exists('post_image_' . $i, $image_files)){
+		$image = $image_files["post_image_" . $i];
+		$title = strip_tags($params["post_slide_title_" . $i]);
+		$description = strip_tags($params["post_slide_description_" . $i]);
+
 		if(! image_ok($image) ){
 			$i++;
 			continue;
@@ -278,7 +278,8 @@ function images_from_params($params){
 		);
 
 		$id = wp_insert_attachment($attachment, $destination);
-		array_push( $images, $id );
+		$the_image = array('id'=>$id, 'title'=> $title, 'description'=> $description);
+		array_push( $images, $the_image );
 
 		$i++;
 	}
