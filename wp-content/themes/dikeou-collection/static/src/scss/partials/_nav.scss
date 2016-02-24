@@ -94,7 +94,10 @@ nav{
 }
 
 .nav-links{
-	margin: 0;
+	margin: 0.5rem 0 0 0;
+	@media screen and (min-width: $tablet){
+		margin-top: 0;
+	}
 	box-sizing: border-box;
 	display: block;
 	width: 100%;
@@ -113,6 +116,13 @@ nav{
 		border-bottom: 1px solid black;
 	}
 
+	> a:first-of-type > li{
+		border-top: 1px solid black;
+		@media screen and (min-width: $tablet){
+			border-top: none;
+		}
+	}
+
 	a{
 		text-decoration: none;
 		&:hover{
@@ -121,10 +131,10 @@ nav{
 	}
 
 	@media screen and (min-width: $tablet){
+		border-top: 1px solid black;
 		text-align: left;
 		padding: 0;
 		margin-top: 1rem;
-		border-top: 1px solid black;
 		> li{
 			padding: 0.75rem 0 0.75rem 0.5rem;
 		}
