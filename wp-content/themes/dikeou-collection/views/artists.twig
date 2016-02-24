@@ -1,4 +1,9 @@
 {% extends "base.twig" %}
+
+{% block head %}
+<meta name="description" content="Artist listing for Dikeou Collection" />
+{% endblock %}
+
 {% block content %}
 	{% for col in cols %}
 		{{ include('artists_nav_column.twig', { 'column': col }) }}

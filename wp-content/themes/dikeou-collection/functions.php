@@ -251,7 +251,6 @@ function images_from_params($image_files, $params){
 
 	while(array_key_exists('post_image_' . $i, $image_files)){
 		$image = $image_files["post_image_" . $i];
-		$title = strip_tags($params["post_slide_title_" . $i]);
 		$description = strip_tags($params["post_slide_description_" . $i]);
 
 		if(! image_ok($image) ){
@@ -278,7 +277,7 @@ function images_from_params($image_files, $params){
 		);
 
 		$id = wp_insert_attachment($attachment, $destination);
-		$the_image = array('id'=>$id, 'title'=> $title, 'description'=> $description);
+		$the_image = array('id'=>$id, 'description'=> $description);
 		array_push( $images, $the_image );
 
 		$i++;
