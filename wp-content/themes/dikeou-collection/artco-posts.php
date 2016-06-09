@@ -1,6 +1,7 @@
 <?php
 $posts = Timber::get_posts();
 $context = Timber::get_context();
+shuffle($posts);
 $context['posts'] = $posts;
 $context['page_type'] = 'art-co';
 $context['page'] = Timber::get_post(array('pagename'=>'artco-page'));

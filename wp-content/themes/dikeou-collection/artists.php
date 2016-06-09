@@ -2,7 +2,7 @@
 $posts = Timber::get_posts();
 $context = Timber::get_context();
 
-shuffle($posts);
+// shuffle($posts);
 $context['posts'] = $posts;
 $context['page_type'] = 'artists';
 
