@@ -9,9 +9,10 @@
 	</div>
 </section>
 <section class="events" data-month="{{ pagination.this_page }}">
+	
+	{% include "events-list.twig" %}
 	<div class="pagination" data-next-page="{{ pagination.next_page }}" data-prev-page="{{ pagination.prev_page }}">
 	</div>
-	{% include "events-list.twig" %}
 </section>
 
 {% endblock %}
