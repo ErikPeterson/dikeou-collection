@@ -112,6 +112,7 @@ var Site = {
 		if($body.hasClass('single-event')) return this.event.init();
 		if($body.hasClass('post-type-archive-event')) return this.events.init();
 		if($body.hasClass('single-artco')) return this.artco.init();
+		if($body.hasClass('page-id-1373')) return this.artco.init();
 	},
 	global: {
 		mobile:	{
@@ -310,8 +311,41 @@ Site.events = {
 	}
 };
 
+Site.popup = {
+	init: function(){
+		this.slideshow();
+	},
+	slideshow: function(){
+		var options = {
+			slide_selector: '.slide',
+			toggle_class: 'active',
+			controls: {
+				prev: '.slide-prev',
+				next: '.slide-next',
+				modal: {
+					handle: '.slide-zoom',
+					modal: '.slide-modal'
+				}
+			},
+			events: {
+				'slide:ready': function($slide){
+					var $handle  = $slide.find('.slide-open'),
+						$slides  = $slide.closest('.gallery');
 
+						$handle.click(function(e){
+							e.preventDefault();
+							$slides.toggleClass('open');
+						}); 
+				}
+			}
+		};
 
+		$('.gallery .slides').each(function(){
+			new Slideshow($(this), options);
+		});
+
+	}
+};
 
 (function($){
 	Site.init();

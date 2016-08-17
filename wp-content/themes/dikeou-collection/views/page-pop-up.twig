@@ -1,0 +1,19 @@
+{% extends "base.twig" %}
+
+{% block head %}
+	<meta name="description" content="Dikeou Collection Pop Up" />
+{% endblock %}
+
+{% block content %}
+	<div class="single">
+		<h2>Pop-Up</h2>
+		<div class="art-co-body">
+			{% if post.get_field('pop_up_slides') %}
+				{% include 'gallery.twig' with {'class': 'gallery', 'gallery': { 'slides': post.get_field('pop_up_slides') } } %}
+			{% endif %}
+			</div>
+
+			{{ post.content }}
+		</div>
+	</div>
+{% endblock %}

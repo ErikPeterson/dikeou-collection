@@ -1,7 +1,7 @@
 <?php
 draw_routes();
 
-define( 'ACF_LITE' , true );
+// define( 'ACF_LITE' , true );
 
 include_once(plugin_dir_path(__FILE__).'../../plugins/advanced-custom-fields/acf.php');
 include_once(plugin_dir_path(__FILE__).'../../plugins/acf-repeater/acf-repeater.php');
@@ -9,6 +9,7 @@ include_once(plugin_dir_path(__FILE__).'../../plugins/acf-repeater/acf-repeater.
 function create_post_types(){
 	create_artist_post_type();
 	create_contact_page();
+	create_popup_page();
 	create_events_post_type();
 	create_artco_post_type();
 }
@@ -45,6 +46,10 @@ function create_contact_page(){
 	include_once(plugin_dir_path(__FILE__).'fields/contact_fields.php');
 }
 
+function create_popup_page(){
+	include_once(plugin_dir_path(__FILE__).'fields/popup_fields.php');
+}
+
 function create_events_post_type(){
 	register_post_type('event',
 		array(
@@ -64,7 +69,7 @@ function create_events_post_type(){
 function add_actions(){
 	add_theme_support( 'post-thumbnails' );
 	add_filter('get_twig', 'twig_functions');
-	add_filter('acf/settings/show_admin', '__return_false');
+	add_filter('acf/settings/show_admin', '__return_true');
 	add_filter('acf/location/rule_types', 'add_choices');
 	add_filter('acf/location/rule_values/page_name', 'add_page_name_rule');
 	add_filter('acf/location/rule_match/page_name', 'add_page_name_match', 10, 3);
