@@ -263,8 +263,8 @@ function images_from_params($image_files, $params){
 			continue;
 		}
 		
-		$base_name = $image['name'];
-		$destination = $base_path . $base_name;
+		$base_name = sanitize_file_name($image['name']);
+		$destination = $base_path . '/' . $base_name;
 		
 		if(!move_uploaded_file( $image['tmp_name'], $destination) ){
 			$i++;
