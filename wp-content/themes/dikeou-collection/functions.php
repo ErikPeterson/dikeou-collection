@@ -215,7 +215,7 @@ function draw_routes(){
 		if( ! wp_verify_nonce($nonce)){
 	     error_log('Bad nonce received: ');
 		 error_log($nonce);
-		 exit;
+		 return Timber::load_template('artcofailed.php');
 		}
 		
 		try{
@@ -239,6 +239,9 @@ function draw_routes(){
 			$params['post_id'] = $post_id;
 			$params['images'] = $images;
 			$params['artist_content'] = $artist_content;
+			$params['email'] = $_REQUEST['email'];
+			$params['first_name'] = $_REQUEST['first_name'];
+			$params['last_name'] = $_REQUEST['last_name'];
 
 			Timber::load_template('artcosubmitted.php', false, 200, $params);
 		} catch(Exception $e){
@@ -259,8 +262,7 @@ function images_from_params($image_files, $params){
 		$description = strip_tags($params["post_slide_description_" . $i]);
 
 		if(! image_ok($image) ){
-			$i++;
-			continue;
+			throw new Exception('Image is invalid');
 		}
 		
 		$base_name = sanitize_file_name($image['name']);

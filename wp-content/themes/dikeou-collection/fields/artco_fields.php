@@ -16,6 +16,27 @@ if(function_exists("register_field_group"))
 				'media_upload' => 'no',
 			),
 			array (
+				'key' => 'field_pppbbbbby2',
+				'label' => 'First Name',
+				'name' => 'first_name',
+				'type' => 'text',
+				'default_value' => '',
+			),
+			array (
+				'key' => 'field_pppbbbbby3',
+				'label' => 'Last Name',
+				'name' => 'last_name',
+				'type' => 'text',
+				'default_value' => '',
+			),
+			array (
+				'key' => 'field_pppbbbbby4',
+				'label' => 'Email',
+				'name' => 'email',
+				'type' => 'text',
+				'default_value' => '',
+			),
+			array (
 				'key' => 'field_55b45a2577045',
 				'label' => 'ART-CO Slide',
 				'name' => 'slides',

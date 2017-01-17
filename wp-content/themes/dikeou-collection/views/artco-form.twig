@@ -9,6 +9,18 @@
 		<form action="/artco-submit" method="post" enctype="multipart/form-data">
 			{{function('wp_nonce_field')}}
 
+			<label for="first_name">
+				Artist's First Name
+				<input type="text" name="first_name" />
+			</label>
+			<label for="last_name">
+				Artist's Last Name
+				<input type="text" name="last_name" />
+			</label>
+			<label for="email">
+				Email
+				<input type="text" name="email" />
+			</label>
 			<label for="post_title">
 				Title
 				<input type="text" name="post_title" />
