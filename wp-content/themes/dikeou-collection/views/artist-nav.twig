@@ -12,6 +12,9 @@
    {% if post.get_field('artist_site_url') and post.get_field('artist_site_url') is not empty %}
    <li><a href="{{ post.get_field('artist_site_url') }}" target="_blank">Website</a></li>
    {% endif %}
+   {% if post.get_field('artist_press') and post.get_field('artist_press') is not empty %}
+   <li data-modal="artist-press">Press</li>
+   {% endif %}
  </ul>
 </div>
 <div class="modals">
@@ -41,5 +44,13 @@
    		{{post.get_field('curator_statement')}}
       </div>
 	</div>
+   {% endif %}
+   {% if post.get_field('artist_press') and post.get_field('artist_press') is not empty %}
+   <div id="artist-press">
+      <div class="modal-inner">
+         <h3>Selected Press</h3>
+         {{post.get_field('artist_press')}}
+      </div>
+   </div>
    {% endif %}
 </div>

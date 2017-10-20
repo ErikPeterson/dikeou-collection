@@ -16,6 +16,15 @@ if(function_exists("register_field_group"))
 				'media_upload' => 'no',
 			),
 			array (
+				'key' => 'field_559862bbbbbnnbnnbnhghg',
+				'label' => 'Artist Press',
+				'name' => 'artist_press',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'basic',
+				'media_upload' => 'no',
+			),
+			array (
 				'key' => 'field_55986321fac21',
 				'label' => 'Curator Statement',
 				'name' => 'curator_statement',
