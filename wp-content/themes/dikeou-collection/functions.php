@@ -219,8 +219,11 @@ function draw_routes(){
 		}
 		
 		try{
-			$images = images_from_params($_FILES, $params);
 			$artist_content = wpautop(strip_tags($params['post_artist_information']));
+			if(preg_match('/https?/i', $artist_content)){
+				throw new Exception('No URLs allowed');
+			}
+			$images = images_from_params($_FILES, $params);
 
 			$options = array(
 				'post_title' => strip_tags($params['post_title']),
