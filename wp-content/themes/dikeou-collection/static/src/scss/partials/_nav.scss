@@ -27,11 +27,17 @@ body > .left{
 	max-width: 50%;
 	position: relative;
 	z-index: 9999;
-
+	@media print{
+		img{
+			height: 8.65rem !important;
+			top: 6.5rem !important;
+			padding-left: 1rem;
+		}
+	}
 	img{
 		position: relative;
 		top: -0.5rem;
-		height: 5.65rem;
+		height: 6.65rem;
 		width: auto;
 	}
 
@@ -49,6 +55,7 @@ body > .left{
 			height: auto;
 		}
 	}
+
 }
 
 nav{

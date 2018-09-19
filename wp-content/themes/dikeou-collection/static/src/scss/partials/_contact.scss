@@ -36,4 +36,13 @@
 		text-align: center;
 		background-color: $theme-blue;
 	}
+	@media print{
+		display: none;
+	}
+}
+
+iframe{
+	@media print{
+		display: none;
+	}
 }

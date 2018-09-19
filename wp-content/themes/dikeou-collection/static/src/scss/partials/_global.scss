@@ -58,3 +58,10 @@ a{
 		z-index: 0;
 	}
 }
+
+@media print {
+	section#content.content-wrapper{
+		margin-left: 17rem !important;
+		margin-top: 2rem !important;
+	}
+}
