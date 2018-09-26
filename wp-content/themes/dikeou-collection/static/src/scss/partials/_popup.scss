@@ -3,15 +3,6 @@
 }
 
 @media print{
-	.slide-controls{
-		display: none;
-	}
-	.slides{
-		display: block !important;
-	}
-	.slide{
-		position: initial !important;
-	}
 	.slide-image{
 		-webkit-print-color-adjust: exact !important;
 		height: 25vw;
