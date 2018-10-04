@@ -61,11 +61,11 @@ section.gallery{
 		background-position: 0% 50%;
 		background-repeat: no-repeat;
 		background-color: rgba(0,0,0,0);
-		
+
 		@media screen and (min-width: $tablet){
 			height: 350px;
 
-		}	
+		}
 
 		@media screen and (min-width: 750px){
 			height: 400px;
@@ -100,7 +100,7 @@ section.gallery{
 		background-color: white;
 		background-size: contain;
 		background-position: center center;
-		background-repeat: no-repeat; 
+		background-repeat: no-repeat;
 		&.open{
 			background-origin: content-box;
 			box-sizing: border-box;
@@ -110,6 +110,22 @@ section.gallery{
 			@media screen and (max-width: 400px){
 				padding:15%;
 			}
+			@media print{
+				-webkit-print-color-adjust: exact !important;
+				height: 60% !important;
+				margin-top: 15rem !important;
+			}
+		}
+	}
+
+	.modal-cover{
+		@media print{
+			background-color: white !important;
+			height: 100% !important;
+			width: 100% !important;
+			position: fixed !important;
+			top: 0 !important;
+			z-index: 999 !important;
 		}
 	}
 

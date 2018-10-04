@@ -1,7 +1,7 @@
 <li class="slide">
 	<div class="slide-image" style="background-image: url({{ image.get_src('slide_full') }})">
 	</div>
-	<div class="slide-controls"> 
+	<div class="slide-controls">
 		<a href="#" class="slide-open">i</a>
 		<a href="#"class="slide-prev">&lt;</a>
 		<a href="#" class="slide-next">&gt;</a>
@@ -9,8 +9,10 @@
 	</div>
 	<div class="slide-content">
 		<h5>{{slide.title}}</h5>
-		{{slide.caption}}	
+		{{slide.caption}}
 	</div>
-    <div class="slide-modal" data-src="{{ image.get_src}}">
-    </div>
+		<div class="modal-cover">
+	    <div class="slide-modal" data-src="{{ image.get_src}}">
+	    </div>
+		</div>
 </li>
