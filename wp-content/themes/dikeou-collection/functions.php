@@ -12,6 +12,7 @@ function create_post_types(){
 	create_popup_page();
 	create_events_post_type();
 	create_artco_post_type();
+	create_midcareersmear_page();
 }
 
 function create_artist_post_type(){
@@ -48,6 +49,10 @@ function create_contact_page(){
 
 function create_popup_page(){
 	include_once(plugin_dir_path(__FILE__).'fields/popup_fields.php');
+}
+
+function create_midcareersmear_page(){
+	include_once(plugin_dir_path(__FILE__).'fields/midcareersmear_fields.php');
 }
 
 function create_events_post_type(){
@@ -114,7 +119,7 @@ function add_page_name_rule($choices){
 		'post_type' => 'page',
 		'posts_per_page' => -1
 		));
-	
+
 	if($posts)
 	{
 		foreach( $posts as $post ){
@@ -217,7 +222,7 @@ function draw_routes(){
 		 error_log($nonce);
 		 return Timber::load_template('artcofailed.php');
 		}
-		
+
 		try{
 			$artist_content = wpautop(strip_tags($params['post_artist_information']));
 			if(preg_match('/https?/i', $artist_content)){
@@ -231,8 +236,8 @@ function draw_routes(){
 				'post_excerpt' => "",
 				'post_status' => 'draft',
 				'post_type' => 'artco'
-			); 
-			
+			);
+
 			$post_id = wp_insert_post($options);
 
 			if($post_id == 0){
@@ -254,7 +259,7 @@ function draw_routes(){
 	});
 }
 
-function images_from_params($image_files, $params){	
+function images_from_params($image_files, $params){
 	$i = 1;
 	$images = array();
 	$upload_dir = wp_upload_dir();
@@ -267,10 +272,10 @@ function images_from_params($image_files, $params){
 		if(! image_ok($image) ){
 			throw new Exception('Image is invalid');
 		}
-		
+
 		$base_name = sanitize_file_name($image['name']);
 		$destination = $base_path . '/' . $base_name;
-		
+
 		if(!move_uploaded_file( $image['tmp_name'], $destination) ){
 			$i++;
 			continue;
@@ -293,7 +298,7 @@ function images_from_params($image_files, $params){
 		$i++;
 	}
 
-	return $images;	
+	return $images;
 }
 
 function image_ok($image){

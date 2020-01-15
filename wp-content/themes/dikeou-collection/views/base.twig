@@ -8,10 +8,10 @@
 	<body class="{{body_class}}" data-template="{{ page_type }}">
 	<div class="left">
 	
-		<div class="logo">
+		<div class="logo" id="d-logo">
 			<a href="/"><img src="/wp-content/themes/dikeou-collection/static/images/logo.svg" /></a>
 		</div>
-		<nav>
+		<nav id="d-nav">
 			<div class="nav-inner">
 			<ul class="nav-links">
 				<a href="/artists" class="{% if page_type == 'artists' %}active{% endif %}"><li>Artists</li></a>
@@ -23,6 +23,7 @@
 				<a href="/pop-up" class="{% if page_type == 'pop-up' %}active{% endif %}"><li>Pop-Up</li></a>
 				<a href="/blog"><li>Blog</li></a>
 				<a href="/artco-posts" class="{% if page_type == 'art-co' %}active{% endif %}"><li>ART-CO</li></a>
+        <a href="/mid-career-smear" class="{% if page_type == 'mid-career-smear' %}active{% endif %}"><li>Mid-Career Smear</li></a>
 			</ul>
 			</div>
 		</nav>

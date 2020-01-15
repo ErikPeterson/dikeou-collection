@@ -13,6 +13,7 @@ var Months = {
 	'12': 'December',
 };
 
+
 var Slideshow = function(el, options){
 	this.index = 0;
 	this.$el = typeof el == 'string' ? $(el) : el;
@@ -117,10 +118,11 @@ var Site = {
 	global: {
 		mobile:	{
 			nav: function(){
-				// $(document).on('click', 'nav', function(){
-				// 	$(this).toggleClass('active');
-				// });
-			    if($('body').hasClass('home')) $('nav').addClass('active');
+				$("#d-logo").on('click', function(e){
+          $('nav').toggleClass('active');
+          e.preventDefault();
+				});
+			    // if($('body').hasClass('home')) $('nav').addClass('active');
 			}
 		}
 	}
@@ -131,15 +133,15 @@ Site.artist = {
 		this.menu();
 		this.slideshows();
 	},
-	menu: function(){
+    menu: function(){
 
-		$(document).on('click', '[data-modal]', function(e){
-			e.preventDefault();
+      $(document).on('click', '[data-modal]', function(e){
+        e.preventDefault();
 
-			var $handle      = $(this);
-			var $newModal    = $('#' + $handle.data('modal'));
-			var $activeModal = $('.modals > .active');
-			
+        var $handle      = $(this);
+        var $newModal    = $('#' + $handle.data('modal'));
+        var $activeModal = $('.modals > .active');
+        
 			if($activeModal){
 				$activeModal.removeClass('active')
 				if($activeModal[0] == $newModal[0]) return;
